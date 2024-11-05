@@ -118,7 +118,7 @@ export default function ProductsPage() {
             />
 
             <ProductSectionWrapper
-              onInView={() => setCurrentProduct('GeneticScreening')}
+              onInView={() => setCurrentProduct('Genetic')}
             >
               <GeneticScreeningSection
                 id='genetic-screening-section'
@@ -127,7 +127,7 @@ export default function ProductsPage() {
             </ProductSectionWrapper>
 
             <ProductSectionWrapper
-              onInView={() => setCurrentProduct('DiagnosticAI')}
+              onInView={() => setCurrentProduct('Imaging')}
             >
               <DiagnosticAISection
                 id='diagnostic-ai-section'

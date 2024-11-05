@@ -14,6 +14,13 @@ interface ProductSectionProps {
     description: string;
     bulletPoints?: string[];
   }>;
+  metrics?: Array<{
+    value: string;
+    label: string;
+    subtext: string;
+  }>;
+  certifications?: string[];
+  integrations?: string[];
 }
 
 const PRODUCT_DESCRIPTION =
