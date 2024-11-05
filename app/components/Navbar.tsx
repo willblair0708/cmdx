@@ -18,6 +18,7 @@ import MobileMenu from './MobileMenu';
 const navItems = [
   { text: 'Home', href: '/' },
   { text: 'Platform', href: '/platform' },
+  { text: 'Non-Profit', href: '/non-profit' },
 ] as const;
 
 const navItemVariants = {
@@ -37,7 +38,7 @@ export default function Navbar({ isFixed = true }: NavbarProps) {
   const navBackground = useTransform(
     scrollY,
     [0, 100],
-    ['rgba(0,0,0,0)', 'rgba(0,0,0,0.8)']
+    ['rgba(0,0,0,0)', 'rgba(0,0,0,0.85)']
   );
 
   const toggleMenu = useCallback(() => setIsMenuOpen((prev) => !prev), []);
@@ -49,7 +50,7 @@ export default function Navbar({ isFixed = true }: NavbarProps) {
       animate='visible'
       className={`${
         isFixed ? 'fixed' : 'absolute'
-      } left-0 right-0 z-50 flex w-full items-center justify-between px-4 py-3 backdrop-blur-sm sm:px-8 sm:py-4`}
+      } left-0 right-0 z-50 flex w-full items-center justify-between px-6 py-4 sm:px-12 sm:py-5`}
     >
       <NavLogo />
       <DesktopMenu pathname={pathname} />
@@ -70,10 +71,14 @@ export default function Navbar({ isFixed = true }: NavbarProps) {
 const NavLogo = memo(() => (
   <motion.div variants={navItemVariants} className='flex items-center'>
     <Link href='/' scroll={false}>
-      <motion.div whileHover={{ scale: 1.05 }} whileTap={{ scale: 0.95 }}>
+      <motion.div
+        whileHover={{ scale: 1.03 }}
+        whileTap={{ scale: 0.97 }}
+        className='transition-all duration-300'
+      >
         <VBIcon
-          size={80}
-          className='sm:size-62 text-white transition-colors duration-300 hover:text-emerald-400'
+          size={72}
+          className='sm:size-58 text-white transition-all duration-300 hover:text-emerald-300'
         />
       </motion.div>
     </Link>
@@ -85,7 +90,7 @@ NavLogo.displayName = 'NavLogo';
 const DesktopMenu = memo(({ pathname }: { pathname: string }) => (
   <motion.div
     variants={{ visible: { transition: { staggerChildren: 0.08 } } }}
-    className='hidden items-center space-x-8 sm:flex sm:space-x-12'
+    className='hidden items-center gap-10 sm:flex sm:gap-14'
   >
     {navItems.map((item) => (
       <NavItem key={item.text} item={item} pathname={pathname} />
@@ -110,14 +115,14 @@ const NavItem = memo(
       <motion.div variants={navItemVariants} className='group relative'>
         <Link
           href={item.href}
-          className='text-[15px] font-medium text-white/90 transition-all hover:text-white'
+          className='text-base font-medium tracking-wide text-white/90 transition-all hover:text-white'
           scroll={false}
         >
-          <span className='flex items-center'>
+          <span className='flex items-center gap-2'>
             <AnimatePresence mode='wait'>
               {isActive && (
                 <motion.span
-                  className='mr-2 h-1.5 w-1.5 rounded-full bg-emerald-400'
+                  className='h-1.5 w-1.5 rounded-full bg-emerald-300'
                   layoutId='activeDot'
                   initial={false}
                   animate={{ scale: 1 }}
@@ -129,7 +134,7 @@ const NavItem = memo(
           </span>
         </Link>
         <motion.div
-          className='absolute -bottom-1 left-0 right-0 h-[2px] origin-left bg-emerald-400'
+          className='absolute -bottom-1 left-0 right-0 h-[2px] origin-left bg-emerald-300'
           initial={{ scaleX: 0 }}
           whileHover={{ scaleX: 1 }}
           transition={{ duration: 0.2 }}
@@ -145,14 +150,16 @@ const ContactButton = memo(() => (
   <motion.div variants={navItemVariants}>
     <Link href='/contact' scroll={false}>
       <motion.button
-        whileHover={{ scale: 1.05, backgroundColor: 'rgba(16, 185, 129, 0.1)' }}
-        whileTap={{ scale: 0.95 }}
-        className='group flex items-center rounded-full border border-emerald-400 px-4 py-1.5 text-sm text-white transition-all hover:border-emerald-300'
+        whileHover={{ scale: 1.03 }}
+        whileTap={{ scale: 0.97 }}
+        className='group relative flex items-center gap-2 overflow-hidden rounded-full bg-emerald-500/10 px-6 py-2.5 text-sm font-medium tracking-wide text-white transition-all duration-300 hover:bg-emerald-500/20'
       >
-        CONTACT
+        <span className='relative z-10 transition-transform duration-300 group-hover:translate-x-[-4px]'>
+          CONTACT
+        </span>
         <motion.svg
           xmlns='http://www.w3.org/2000/svg'
-          className='ml-2 h-4 w-4 text-emerald-400 transition-transform group-hover:translate-x-0.5'
+          className='relative z-10 h-4 w-4 text-emerald-300 transition-all duration-300 group-hover:translate-x-1'
           fill='none'
           viewBox='0 0 24 24'
           stroke='currentColor'
@@ -164,6 +171,7 @@ const ContactButton = memo(() => (
             d='M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z'
           />
         </motion.svg>
+        <div className='absolute inset-0 -z-10 bg-gradient-to-r from-emerald-500/0 via-emerald-500/5 to-emerald-500/0 opacity-0 transition-opacity duration-300 group-hover:opacity-100' />
       </motion.button>
     </Link>
   </motion.div>
@@ -181,15 +189,15 @@ const MobileMenuButton = memo(({ toggleMenu }: { toggleMenu: () => void }) => (
     aria-label='Toggle mobile menu'
   >
     <svg
-      width='32'
-      height='10'
-      viewBox='0 0 32 10'
+      width='28'
+      height='8'
+      viewBox='0 0 28 8'
       fill='none'
       xmlns='http://www.w3.org/2000/svg'
-      className='text-emerald-400'
+      className='text-emerald-300'
     >
-      <path d='M0.5 1H32' stroke='currentColor' strokeWidth='2' />
-      <path d='M0.5 9H32' stroke='currentColor' strokeWidth='2' />
+      <path d='M0.5 1H28' stroke='currentColor' strokeWidth='1.5' />
+      <path d='M0.5 7H28' stroke='currentColor' strokeWidth='1.5' />
     </svg>
   </motion.button>
 ));
