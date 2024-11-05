@@ -80,10 +80,7 @@ export default function AboutPage() {
           </motion.main>
         </motion.div>
       </AnimatePresence>
-      <FutureSection
-                id='section-2'
-                bgColor='#181818'
-              />
+      <FutureSection id='section-2' bgColor='#181818' />
       <Footer />
     </>
   );

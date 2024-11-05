@@ -73,28 +73,30 @@ export default function FutureSection({ id, bgColor }: FutureSectionProps) {
       <div className='absolute inset-0 bg-[radial-gradient(circle_at_bottom_left,rgba(3,232,122,0.08),transparent_70%)]' />
       <div className='absolute inset-0 bg-[linear-gradient(to_bottom,transparent,rgba(0,0,0,0.5))]' />
       <div className='absolute inset-0 bg-[url("/assets/noise.png")] opacity-[0.03] mix-blend-overlay' />
-      
+
       <div className='container relative z-10 mx-auto mt-[120px] lg:mt-[160px]'>
         {/* Enhanced Hero Section */}
-        <motion.div 
-          variants={itemVariants} 
+        <motion.div
+          variants={itemVariants}
           className='mb-32 flex flex-col items-center'
           initial={{ opacity: 0, y: 50 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8 }}
         >
-          <motion.div 
+          <motion.div
             className='relative mb-8 overflow-hidden rounded-full border border-white/5 bg-white/5 p-1 backdrop-blur-md'
             whileHover={{ scale: 1.02 }}
           >
             <div className='flex items-center gap-2 px-4 py-1.5'>
               <span className='h-2 w-2 animate-[pulse_2s_ease-in-out_infinite] rounded-full bg-[#03E87A]' />
-              <span className='text-xs font-medium tracking-wider'>WE'RE HIRING</span>
+              <span className='text-xs font-medium tracking-wider'>
+                WE'RE HIRING
+              </span>
             </div>
-            <div className='absolute inset-0 bg-gradient-to-r from-transparent via-white/10 to-transparent animate-[shimmer_2s_infinite]' />
+            <div className='absolute inset-0 animate-[shimmer_2s_infinite] bg-gradient-to-r from-transparent via-white/10 to-transparent' />
           </motion.div>
 
-          <h2 className='mx-auto mb-8 max-w-4xl text-center font-book text-5xl tracking-tight lg:text-7xl'>
+          <h2 className='mx-auto mb-8 max-w-4xl text-center text-5xl font-book tracking-tight lg:text-7xl'>
             Join us in shaping the{' '}
             <span className='relative inline-block'>
               future
@@ -107,8 +109,9 @@ export default function FutureSection({ id, bgColor }: FutureSectionProps) {
             </span>{' '}
             of hospitality
           </h2>
-          <p className='mx-auto max-w-2xl text-center text-lg font-light leading-relaxed text-white/60'>
-            Where cutting-edge AI technology meets genuine human connection to create unforgettable guest experiences.
+          <p className='mx-auto max-w-2xl text-center font-light text-lg leading-relaxed text-white/60'>
+            Where cutting-edge AI technology meets genuine human connection to
+            create unforgettable guest experiences.
           </p>
         </motion.div>
 
@@ -124,7 +127,7 @@ export default function FutureSection({ id, bgColor }: FutureSectionProps) {
             <div className='absolute inset-0 bg-gradient-to-r from-[#03E87A]/20 via-white/5 to-transparent blur-xl' />
             <div className='absolute inset-0 bg-[url("/assets/noise.png")] opacity-[0.03] mix-blend-overlay' />
             <div className='relative flex flex-col gap-8 rounded-[23px] bg-gradient-to-br from-gray-900/95 to-black p-8 backdrop-blur-xl lg:flex-row lg:items-center lg:p-12'>
-              <motion.div 
+              <motion.div
                 className='relative aspect-[3/4] w-full max-w-sm overflow-hidden rounded-2xl lg:w-2/5'
                 whileHover={{ scale: 1.02 }}
                 transition={{ duration: 0.3 }}
@@ -144,17 +147,21 @@ export default function FutureSection({ id, bgColor }: FutureSectionProps) {
               <div className='flex flex-1 flex-col justify-between gap-8 lg:py-8'>
                 <div>
                   <div className='mb-6 flex items-center gap-4'>
-                    <h3 className='text-2xl font-medium bg-gradient-to-r from-white to-white/80 bg-clip-text text-transparent'>Jessie Fischer</h3>
+                    <h3 className='bg-gradient-to-r from-white to-white/80 bg-clip-text text-2xl font-medium text-transparent'>
+                      Jessie Fischer
+                    </h3>
                     <div className='h-px flex-1 bg-gradient-to-r from-white/20 to-transparent' />
                   </div>
-                  <p className='mb-8 text-white/60 tracking-wide'>
+                  <p className='mb-8 tracking-wide text-white/60'>
                     Founder & CEO
                   </p>
-                  <blockquote className='text-xl font-light italic leading-relaxed text-white/80'>
-                    "We're not just building another AI tool – we're crafting the future of hospitality experiences, where technology enhances rather than replaces human connection."
+                  <blockquote className='font-light text-xl italic leading-relaxed text-white/80'>
+                    "We're not just building another AI tool – we're crafting
+                    the future of hospitality experiences, where technology
+                    enhances rather than replaces human connection."
                   </blockquote>
                 </div>
-                
+
                 <div className='flex items-center gap-6'>
                   <Link
                     href='https://www.linkedin.com/in/jessiefischer/'
@@ -162,7 +169,11 @@ export default function FutureSection({ id, bgColor }: FutureSectionProps) {
                     rel='noopener noreferrer'
                     className='group rounded-full bg-white/5 p-3 transition-all hover:bg-white/10 hover:shadow-lg hover:shadow-[#03E87A]/10'
                   >
-                    <LinkedIn width={20} height={20} className='transition-transform group-hover:scale-110' />
+                    <LinkedIn
+                      width={20}
+                      height={20}
+                      className='transition-transform group-hover:scale-110'
+                    />
                   </Link>
                   <div className='h-8 w-px bg-white/10' />
                   <Link
@@ -170,7 +181,9 @@ export default function FutureSection({ id, bgColor }: FutureSectionProps) {
                     className='group flex items-center gap-2 text-sm text-white/60 transition-colors hover:text-white'
                   >
                     View Open Positions
-                    <span className='inline-block transition-transform group-hover:translate-x-1'>→</span>
+                    <span className='inline-block transition-transform group-hover:translate-x-1'>
+                      →
+                    </span>
                   </Link>
                 </div>
               </div>
@@ -189,7 +202,7 @@ export default function FutureSection({ id, bgColor }: FutureSectionProps) {
               {roles.length} positions available
             </p>
           </motion.div> */}
-{/* 
+        {/* 
           <motion.div variants={itemVariants} className='space-y-4'>
             {roles.map((role, index) => (
               <motion.div
@@ -217,7 +230,7 @@ export default function FutureSection({ id, bgColor }: FutureSectionProps) {
             ))}
           </motion.div> */}
 
-          {/* Enhanced Contact Section
+        {/* Enhanced Contact Section
           <motion.div
             variants={itemVariants}
             className='relative mt-32 mb-20 overflow-hidden rounded-3xl border border-white/5 bg-white/5 p-12 text-center backdrop-blur-sm'
