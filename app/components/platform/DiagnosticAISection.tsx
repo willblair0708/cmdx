@@ -15,7 +15,7 @@ export default function DiagnosticAISection({
       bgColor={bgColor}
       productName='AI Diagnostics'
       productDescription='Advanced neural networks for CCM detection in CT/MRI scans'
-      imageSrc='/assets/products/ai-diagnostics.webp'
+      imageSrc='/assets/platform/ai-diagnostics.png'
       features={[
         {
           title: 'DEEP LEARNING ANALYSIS',
