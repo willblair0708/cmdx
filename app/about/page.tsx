@@ -19,10 +19,10 @@ const MissionSection = dynamic(
   { ssr: false }
 );
 
-const FutureSection = dynamic(
-  () => import('../components/about/FutureSection'),
-  { ssr: false }
-);
+// const FutureSection = dynamic(
+//   () => import('../components/about/FutureSection'),
+//   { ssr: false }
+// );
 
 // const SimulationSection = dynamic(
 //   () => import('../components/about/SimulationSection'),
@@ -80,7 +80,7 @@ export default function AboutPage() {
           </motion.main>
         </motion.div>
       </AnimatePresence>
-      <FutureSection id='section-2' bgColor='#181818' />
+      {/* <FutureSection id='section-2' bgColor='#181818' /> */}
       <Footer />
     </>
   );
