@@ -24,7 +24,6 @@ interface HeroSectionProps {
   isMobile: boolean;
 }
 
-// Move form fields outside component to prevent recreation on each render
 const formFields = [
   {
     id: 'firstName',
@@ -48,13 +47,6 @@ const formFields = [
     width: 'half',
   },
   {
-    id: 'jobTitle',
-    label: 'JOB TITLE',
-    placeholder: 'Job Title',
-    type: 'text',
-    width: 'half',
-  },
-  {
     id: 'organization',
     label: 'ORGANIZATION',
     placeholder: 'Organization',
@@ -62,22 +54,28 @@ const formFields = [
     width: 'half',
   },
   {
+    id: 'researchArea',
+    label: 'RESEARCH AREA',
+    placeholder: 'e.g. Drug Discovery, Cell Biology, Disease Modeling',
+    type: 'text',
+    width: 'half',
+  },
+  {
     id: 'message',
     label: 'MESSAGE',
-    placeholder: 'Your Message',
+    placeholder:
+      'Tell us about your research goals. How could our AI-powered virtual cell models help accelerate your drug discovery or disease research?',
     type: 'textarea',
     width: 'full',
   },
 ] as const;
 
-// Move form field rows outside component
 const formFieldRows = [
   ['firstName', 'lastName'],
-  ['email', 'jobTitle'],
-  ['organization'],
+  ['email', 'organization'],
+  ['researchArea'],
 ] as const;
 
-// Move variants outside component to prevent recreation
 const containerVariants = {
   initial: { opacity: 0, y: 20 },
   animate: {
@@ -102,7 +100,6 @@ const itemVariants = {
   },
 } as const;
 
-// Add these variants near the top with other variants
 const inputVariants = {
   initial: { y: 0 },
 } as const;
@@ -125,7 +122,6 @@ const labelVariants = {
   },
 } as const;
 
-// Add this type declaration at the top of the file, after the imports
 declare global {
   interface Window {
     grecaptcha: {
@@ -213,8 +209,8 @@ const formSchema = z.object({
   firstName: z.string().min(1),
   lastName: z.string().min(1),
   email: z.string().email(),
-  jobTitle: z.string().min(3),
   organization: z.string().min(2),
+  researchArea: z.string().min(2),
   message: z.string().min(50),
 });
 
@@ -250,14 +246,15 @@ export default function HeroSection({
             }),
           });
 
-          // Log response for debugging
           console.log('Form submission response:', {
             status: response.status,
             statusText: response.statusText,
           });
 
           if (response.ok) {
-            toast.success('Message sent! We will get back to you soon.');
+            toast.success(
+              'Message sent! Our team will contact you shortly to discuss your research needs.'
+            );
             form.reset();
           } else {
             const errorText = await response.text();
@@ -303,48 +300,72 @@ export default function HeroSection({
     <motion.section
       ref={sectionRef}
       id={id}
-      className='relative flex min-h-[98dvh] flex-col overflow-x-hidden bg-[#000000] text-white'
-      initial={{ opacity: 0, backgroundColor: '#000000' }}
+      className='relative flex min-h-screen flex-col overflow-x-hidden text-white'
+      initial={{ opacity: 0 }}
       animate={{ opacity: 1 }}
       transition={{ duration: 0.5 }}
     >
       <Navbar isFixed={false} />
 
-      <div className='relative mt-20 flex flex-1 flex-col px-4 pb-8 sm:flex-row sm:justify-between sm:px-2 sm:pb-0 md:px-4 lg:px-8'>
-        <motion.h1
-          variants={itemVariants}
-          initial='initial'
-          animate='animate'
-          className={`${
-            isMobile ? 'mt-24 text-[36px]' : 'mt-[30vh] text-[42px]'
-          } max-w-2xl font-book leading-[1.2] tracking-[-0.01em]`}
-        >
-          See The Future,
-          <br />
-          Change The Present
-        </motion.h1>
+      <div className='mx-auto flex w-full max-w-7xl flex-1 flex-col px-4 lg:flex-row lg:items-center lg:justify-between lg:gap-20 lg:px-8'>
+        {/* Left Column */}
+        <div className='relative z-10 mt-24 max-w-2xl lg:mt-0'>
+          {/* Status Badge */}
+          <motion.div
+            variants={itemVariants}
+            initial='initial'
+            animate='animate'
+            className='mb-8 inline-flex items-center gap-2 rounded-full border border-white/10 bg-white/[0.03] px-4 py-2 backdrop-blur-sm'
+          >
+            <div className='relative h-2 w-2'>
+              <div className='absolute h-full w-full animate-ping rounded-full bg-white/50'></div>
+              <div className='relative h-full w-full rounded-full bg-white'></div>
+            </div>
+            <span className='text-sm font-medium text-white/90'>
+              Virtual Cell Innovation
+            </span>
+          </motion.div>
 
-        <div
-          className={`${
-            isMobile
-              ? 'mt-12 w-full'
-              : 'mt-32 w-full max-w-[569px] xl:max-w-[640px]'
-          } mb-4 sm:mb-8`}
-        >
+          <motion.h1
+            variants={itemVariants}
+            initial='initial'
+            animate='animate'
+            className='mb-6 text-[42px] font-book leading-[1.2] tracking-[-0.02em] lg:text-[56px]'
+          >
+            <span className='bg-gradient-to-r from-white via-white/90 to-white/80 bg-clip-text text-transparent'>
+              Transform Your Research
+            </span>
+            <br />
+            with AI-Powered Cell Models
+          </motion.h1>
+
           <motion.p
             variants={itemVariants}
             initial='initial'
             animate='animate'
-            className='mb-[30px] text-lg font-book tracking-tight sm:mb-[50px] sm:text-[24px]'
+            className='mb-8 text-lg leading-relaxed text-neutral-300/90'
           >
-            Contact / Request a Demo
+            Experience breakthrough discoveries with our advanced virtual cell
+            simulations. Partner with us to accelerate your drug development
+            pipeline and unlock new possibilities in disease research.
+          </motion.p>
+        </div>
+
+        {/* Right Column - Form */}
+        <div className='relative mb-12 w-full max-w-xl rounded-2xl border border-white/5 bg-white/[0.02] p-8 backdrop-blur-sm lg:mb-0'>
+          <motion.p
+            variants={itemVariants}
+            initial='initial'
+            animate='animate'
+            className='mb-8 text-xl font-medium tracking-tight'
+          >
+            Request a Demo
           </motion.p>
 
           <form
             onSubmit={form.handleSubmit(onSubmit)}
-            className='relative flex w-full flex-col items-start gap-[50px]'
+            className='relative flex w-full flex-col gap-8'
           >
-            {/* honey pot */}
             <input type='hidden' name='_gotcha' className='hidden' />
             {formFieldRows.map((row) => (
               <div
@@ -402,8 +423,9 @@ export default function HeroSection({
                     />
                   </svg>
                   <p className='text-sm text-white opacity-80'>
-                    Please tell us about your project so we can connect you with
-                    the right team.
+                    Share your research objectives and discover how our virtual
+                    cell models can enhance your drug discovery pipeline through
+                    accurate in silico simulations.
                   </p>
                 </div>
 
@@ -450,7 +472,7 @@ export default function HeroSection({
               whileTap={{ scale: isSubmitting ? 1 : 0.98 }}
             >
               <span className='relative mt-[-1.00px] w-fit whitespace-nowrap text-xs font-normal leading-[13.2px] tracking-[0.96px] text-white'>
-                {isSubmitting ? 'SENDING...' : 'SUBMIT'}
+                {isSubmitting ? 'SENDING...' : 'REQUEST DEMO'}
               </span>
               {!isSubmitting && (
                 <ArrowIcon
