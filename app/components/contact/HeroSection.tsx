@@ -1,6 +1,6 @@
 'use client';
 
-import { useRef, useState } from 'react';
+import { useEffect, useRef, useState } from 'react';
 import {
   FieldValues,
   useForm,
@@ -10,7 +10,13 @@ import {
 } from 'react-hook-form';
 
 import { zodResolver } from '@hookform/resolvers/zod';
-import { motion } from 'framer-motion';
+import {
+  motion,
+  useInView,
+  useScroll,
+  useSpring,
+  useTransform,
+} from 'framer-motion';
 import { toast } from 'sonner';
 import { z } from 'zod';
 
@@ -75,6 +81,30 @@ const formFieldRows = [
   ['email', 'organization'],
   ['researchArea'],
 ] as const;
+
+const fadeInVariants = {
+  hidden: { opacity: 0, y: 10 },
+  visible: {
+    opacity: 1,
+    y: 0,
+    transition: {
+      duration: 0.6,
+      ease: [0.6, 0.05, 0.01, 0.9],
+    },
+  },
+};
+
+const slideInVariants = {
+  hidden: { opacity: 0, x: -20 },
+  visible: {
+    opacity: 1,
+    x: 0,
+    transition: {
+      duration: 0.6,
+      ease: [0.6, 0.05, 0.01, 0.9],
+    },
+  },
+};
 
 const containerVariants = {
   initial: { opacity: 0, y: 20 },
@@ -224,6 +254,19 @@ export default function HeroSection({
     resolver: zodResolver(formSchema),
   });
   const [isSubmitting, setIsSubmitting] = useState(false);
+  const isInView = useInView(sectionRef, { once: true, amount: 0.1 });
+
+  const { scrollYProgress } = useScroll({
+    target: sectionRef,
+    offset: ['start start', 'end start'],
+  });
+
+  const opacity = useTransform(scrollYProgress, [0, 0.3], [1, 0]);
+  const scale = useTransform(scrollYProgress, [0, 0.3], [1, 0.95]);
+  const y = useTransform(scrollYProgress, [0, 0.3], ['0%', '10%']);
+
+  const springConfig = { stiffness: 100, damping: 30, restDelta: 0.001 };
+  const ySpring = useSpring(y, springConfig);
 
   const onSubmit = async (data: z.infer<typeof formSchema>) => {
     try {
@@ -300,59 +343,66 @@ export default function HeroSection({
     <motion.section
       ref={sectionRef}
       id={id}
-      className='relative flex min-h-screen flex-col overflow-x-hidden text-white'
+      className='relative flex min-h-screen flex-col overflow-x-hidden bg-gradient-to-b from-gray-950 via-blue-950/90 to-gray-950 text-white'
       initial={{ opacity: 0 }}
       animate={{ opacity: 1 }}
-      transition={{ duration: 0.5 }}
+      transition={{ duration: 1 }}
     >
       <Navbar isFixed={false} />
 
-      <div className='mx-auto flex w-full max-w-7xl flex-1 flex-col px-4 lg:flex-row lg:items-center lg:justify-between lg:gap-20 lg:px-8'>
+      <motion.div
+        style={{ opacity, scale, y: ySpring }}
+        className='mx-auto flex w-full max-w-7xl flex-1 flex-col px-4 lg:flex-row lg:items-center lg:justify-between lg:gap-20 lg:px-8'
+      >
         {/* Left Column */}
         <div className='relative z-10 mt-24 max-w-2xl lg:mt-0'>
           {/* Status Badge */}
           <motion.div
-            variants={itemVariants}
-            initial='initial'
-            animate='animate'
-            className='mb-8 inline-flex items-center gap-2 rounded-full border border-white/10 bg-white/[0.03] px-4 py-2 backdrop-blur-sm'
+            variants={fadeInVariants}
+            initial='hidden'
+            animate={isInView ? 'visible' : 'hidden'}
+            className='mb-8 inline-flex items-center gap-2 rounded-full border border-blue-500/10 bg-white/[0.03] px-4 py-2 backdrop-blur-sm'
           >
             <div className='relative h-2 w-2'>
-              <div className='absolute h-full w-full animate-ping rounded-full bg-white/50'></div>
-              <div className='relative h-full w-full rounded-full bg-white'></div>
+              <div className='absolute h-full w-full animate-ping rounded-full bg-blue-400/20'></div>
+              <div className='relative h-full w-full rounded-full bg-blue-400'></div>
             </div>
             <span className='text-sm font-medium text-white/90'>
-              Virtual Cell Innovation
+              AI-Powered Innovation
             </span>
           </motion.div>
 
           <motion.h1
-            variants={itemVariants}
-            initial='initial'
-            animate='animate'
-            className='mb-6 text-[42px] font-book leading-[1.2] tracking-[-0.02em] lg:text-[56px]'
+            variants={slideInVariants}
+            initial='hidden'
+            animate={isInView ? 'visible' : 'hidden'}
+            className='mb-6 font-light text-4xl tracking-tight sm:text-6xl lg:text-7xl'
           >
-            <span className='bg-gradient-to-r from-white via-white/90 to-white/80 bg-clip-text text-transparent'>
-              Transform Your Research
-            </span>
+            <span className='text-white'>Transforming</span>
             <br />
-            with AI-Powered Cell Models
+            <span className='bg-gradient-to-r from-blue-400 to-blue-200 bg-clip-text text-transparent'>
+              CCM Diagnostics
+            </span>
           </motion.h1>
 
           <motion.p
-            variants={itemVariants}
-            initial='initial'
-            animate='animate'
-            className='mb-8 text-lg leading-relaxed text-neutral-300/90'
+            variants={fadeInVariants}
+            initial='hidden'
+            animate={isInView ? 'visible' : 'hidden'}
+            className='mb-8 text-lg text-neutral-400'
           >
-            Experience breakthrough discoveries with our advanced virtual cell
-            simulations. Partner with us to accelerate your drug development
-            pipeline and unlock new possibilities in disease research.
+            Pioneering accessible genetic screening and AI-powered imaging
+            analysis for underserved communities worldwide.
           </motion.p>
         </div>
 
         {/* Right Column - Form */}
-        <div className='relative mb-12 w-full max-w-xl rounded-2xl border border-white/5 bg-white/[0.02] p-8 backdrop-blur-sm lg:mb-0'>
+        <motion.div
+          variants={containerVariants}
+          initial='initial'
+          animate='animate'
+          className='relative mb-12 w-full max-w-xl rounded-2xl border border-blue-500/10 bg-gradient-to-r from-blue-500/5 via-blue-400/5 to-transparent p-8 backdrop-blur-sm lg:mb-0'
+        >
           <motion.p
             variants={itemVariants}
             initial='initial'
@@ -467,10 +517,11 @@ export default function HeroSection({
             <motion.button
               type='submit'
               disabled={isSubmitting}
-              className='relative -mt-4 inline-flex flex-[0_0_auto] items-center justify-center gap-2.5 rounded-[20000px] bg-zinc-900 px-2 py-1 hover:border-white/20 disabled:cursor-not-allowed disabled:opacity-50'
+              className='group relative -mt-4 inline-flex flex-[0_0_auto] items-center justify-center gap-2.5 rounded-[20000px] bg-zinc-900 px-6 py-3 text-sm font-semibold text-white backdrop-blur-sm transition-all duration-300 hover:border-blue-500/20 hover:bg-white/[0.04] hover:shadow-lg hover:shadow-blue-500/5 disabled:cursor-not-allowed disabled:opacity-50'
               whileHover={{ scale: isSubmitting ? 1 : 1.02 }}
               whileTap={{ scale: isSubmitting ? 1 : 0.98 }}
             >
+              <div className='absolute inset-0 bg-gradient-to-r from-blue-400/0 via-blue-300/10 to-blue-400/0 transition-transform duration-500' />
               <span className='relative mt-[-1.00px] w-fit whitespace-nowrap text-xs font-normal leading-[13.2px] tracking-[0.96px] text-white'>
                 {isSubmitting ? 'SENDING...' : 'REQUEST DEMO'}
               </span>
@@ -483,8 +534,8 @@ export default function HeroSection({
               )}
             </motion.button>
           </form>
-        </div>
-      </div>
+        </motion.div>
+      </motion.div>
     </motion.section>
   );
 }
