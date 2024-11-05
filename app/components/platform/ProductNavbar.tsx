@@ -1,16 +1,14 @@
 import Link from 'next/link';
-import { useCallback, useEffect, useMemo, useState } from 'react';
+import { useCallback, useMemo } from 'react';
 import { memo } from 'react';
 
-import { AnimatePresence, motion } from 'framer-motion';
-
-import useIsMobile from '@/hooks/use-is-mobile';
+import { motion } from 'framer-motion';
 
 interface ProductNavbarProps {
   currentProduct: string;
 }
 
-const products = ['Genetic Screening', 'Diagnostic AI'];
+const products = ['Genetic Screening', 'AI Diagnostics'];
 
 const navItemVariants = {
   hidden: { opacity: 0, y: 10 },
@@ -20,28 +18,6 @@ const navItemVariants = {
     transition: {
       duration: 0.2,
       ease: 'easeOut',
-    },
-  },
-};
-
-const menuVariants = {
-  open: {
-    opacity: 1,
-    height: 'auto',
-    marginTop: 8,
-    transition: {
-      duration: 0.3,
-      ease: 'easeInOut',
-    },
-  },
-  closed: {
-    // Added 'closed' key
-    opacity: 0,
-    height: 0,
-    marginTop: 0,
-    transition: {
-      duration: 0.3,
-      ease: 'easeInOut',
     },
   },
 };
@@ -60,14 +36,21 @@ const ProductLink = memo(
       () => currentProduct === product,
       [currentProduct, product]
     );
+
+    const sectionId = useMemo(() => {
+      const idMap: { [key: string]: string } = {
+        'Genetic Screening': 'genetic-screening',
+        'AI Diagnostics': 'diagnostic-ai',
+      };
+      return idMap[product] || product.toLowerCase().replace(' ', '-');
+    }, [product]);
+
     const handleClick = useCallback(
       (e: React.MouseEvent) => {
         e.preventDefault();
-        const section = document.getElementById(
-          `${product.toLowerCase()}-section`
-        );
+        const section = document.getElementById(`${sectionId}-section`);
         if (section) {
-          const navHeight = product.toLowerCase() === 'dynamo' ? 0 : 90;
+          const navHeight = 90;
           const sectionTop = section.offsetTop - navHeight;
           window.scrollTo({
             top: sectionTop,
@@ -76,7 +59,7 @@ const ProductLink = memo(
         }
         if (onClick) onClick();
       },
-      [product, onClick]
+      [sectionId, onClick]
     );
 
     return (
@@ -87,27 +70,27 @@ const ProductLink = memo(
         animate='visible'
       >
         <Link
-          href={`#${product.toLowerCase()}-section`}
+          href={`#${sectionId}-section`}
           className={`flex items-center transition-colors hover:text-white ${
-            isActive ? 'text-white' : 'text-white opacity-50'
+            isActive ? 'text-white' : 'text-white/60'
           }`}
           onClick={handleClick}
           aria-current={isActive ? 'page' : undefined}
         >
           <span className='flex items-center'>
             <motion.span
-              className={`mr-2 h-2 w-2 rounded-full bg-[#ffffff] text-white ${
-                isActive ? 'visible' : 'invisible'
+              className={`mr-2 h-1.5 w-1.5 rounded-full bg-blue-400 ${
+                isActive ? 'opacity-100' : 'opacity-0'
               }`}
               initial={{ scale: 0 }}
-              animate={{ scale: 1 }}
-              exit={{ scale: 0 }}
+              animate={{ scale: isActive ? 1 : 0 }}
+              transition={{ duration: 0.2 }}
             />
             {product}
           </span>
         </Link>
         <motion.div
-          className='absolute -bottom-1 left-0 right-0 h-px origin-left bg-white'
+          className='absolute -bottom-1 left-0 right-0 h-px origin-left bg-blue-400/50'
           initial={{ scaleX: 0 }}
           whileHover={{ scaleX: 1 }}
           transition={{ duration: 0.2 }}
@@ -124,19 +107,18 @@ function ProductNavbar({ currentProduct }: ProductNavbarProps) {
     <motion.nav
       initial={{ opacity: 0 }}
       animate={{ opacity: 1 }}
-      className='w-full bg-[#18181B]'
+      className='sticky top-0 z-50 w-full bg-gray-950/80 backdrop-blur-md'
     >
-      <div className='flex flex-col items-center justify-between p-4 sm:p-6'>
-        <div className='h-[1px] w-full bg-white'></div>
-        <div className='mt-4 flex w-full items-center justify-between sm:mt-6'>
+      <div className='mx-auto max-w-7xl px-4 sm:px-6 lg:px-8'>
+        <div className='flex h-24 items-center justify-between border-b border-blue-500/10'>
           <motion.p
             variants={navItemVariants}
-            className='text-[12px] font-book leading-[15px] tracking-[-0.02em] text-white opacity-70 sm:text-[15px] sm:leading-[18px]'
+            className='text-sm font-medium text-blue-200/60'
           >
-            Aaru Products:
+            Our Solutions
           </motion.p>
 
-          <div className='flex space-x-4 font-oracle text-[12px] leading-[15px] tracking-[-0.02em] text-white sm:space-x-8 sm:text-[15px] sm:leading-[18px]'>
+          <div className='flex space-x-8 text-sm font-medium'>
             {products.map((product) => (
               <ProductLink
                 key={product}

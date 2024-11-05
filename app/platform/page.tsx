@@ -34,7 +34,6 @@ export default function ProductsPage() {
   const [showNavbar, setShowNavbar] = useState(false);
   const containerRef = useRef<HTMLDivElement>(null);
 
-  // Optimize intersection observer for product sections
   useEffect(() => {
     const options = {
       threshold: [0.3],
@@ -50,17 +49,19 @@ export default function ProductsPage() {
 
       if (visibleEntry.intersectionRatio >= 0.3) {
         const sectionId = visibleEntry.target.id;
-        const productName = sectionId.split('-')[0];
-        setCurrentProduct(
-          productName.charAt(0).toUpperCase() + productName.slice(1)
-        );
+        const productMap: { [key: string]: string } = {
+          'genetic-screening-section': 'Genetic Screening',
+          'diagnostic-ai-section': 'AI Diagnostics',
+        };
+        setCurrentProduct(productMap[sectionId] || '');
       }
     };
 
     const observer = new IntersectionObserver(handleIntersection, options);
     const sections = document.querySelectorAll(
-      '[id$="-section"]:not(#product-section-0)'
+      '#genetic-screening-section, #diagnostic-ai-section'
     );
+
     sections.forEach((section) => observer.observe(section));
 
     return () => observer.disconnect();
@@ -100,6 +101,7 @@ export default function ProductsPage() {
               </motion.div>
             )}
           </AnimatePresence>
+
           <motion.main
             ref={containerRef}
             initial='hidden'
@@ -118,7 +120,7 @@ export default function ProductsPage() {
             />
 
             <ProductSectionWrapper
-              onInView={() => setCurrentProduct('Genetic')}
+              onInView={() => setCurrentProduct('Genetic Screening')}
             >
               <GeneticScreeningSection
                 id='genetic-screening-section'
@@ -127,7 +129,7 @@ export default function ProductsPage() {
             </ProductSectionWrapper>
 
             <ProductSectionWrapper
-              onInView={() => setCurrentProduct('Imaging')}
+              onInView={() => setCurrentProduct('AI Diagnostics')}
             >
               <DiagnosticAISection
                 id='diagnostic-ai-section'

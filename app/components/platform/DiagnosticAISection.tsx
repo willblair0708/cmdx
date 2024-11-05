@@ -13,7 +13,7 @@ export default function DiagnosticAISection({
     <ProductSection
       id={id}
       bgColor={bgColor}
-      productName='Dynamo'
+      productName='AI Diagnostics'
       productDescription='Advanced neural networks for precise CCM detection and analysis in neuroimaging'
       imageSrc='/assets/platform/ai-diagnostics.png'
       features={[
