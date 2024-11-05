@@ -19,6 +19,7 @@ const navItems = [
   { text: 'Home', href: '/' },
   { text: 'Platform', href: '/platform' },
   { text: 'Non-Profit', href: '/non-profit' },
+  { text: 'About', href: '/about' },
 ] as const;
 
 const navItemVariants = {
@@ -76,10 +77,9 @@ const NavLogo = memo(() => (
         whileTap={{ scale: 0.97 }}
         className='transition-all duration-300'
       >
-        <VBIcon
-          size={72}
-          className='sm:size-58 text-white transition-all duration-300 hover:text-emerald-300'
-        />
+        <span className='text-xl font-book tracking-tight text-white/90 transition-all duration-300 group-hover:text-white'>
+          CM<span className='font-light tracking-tighter'>Diagnostics</span>
+        </span>
       </motion.div>
     </Link>
   </motion.div>
@@ -118,24 +118,12 @@ const NavItem = memo(
           className='text-base font-medium tracking-wide text-white/90 transition-all hover:text-white'
           scroll={false}
         >
-          <span className='flex items-center gap-2'>
-            <AnimatePresence mode='wait'>
-              {isActive && (
-                <motion.span
-                  className='h-1.5 w-1.5 rounded-full bg-emerald-300'
-                  layoutId='activeDot'
-                  initial={false}
-                  animate={{ scale: 1 }}
-                  exit={{ scale: 0 }}
-                />
-              )}
-            </AnimatePresence>
-            {item.text}
-          </span>
+          <span className='flex items-center'>{item.text}</span>
         </Link>
         <motion.div
-          className='absolute -bottom-1 left-0 right-0 h-[2px] origin-left bg-emerald-300'
-          initial={{ scaleX: 0 }}
+          className={`absolute -bottom-1 left-0 right-0 h-[2px] origin-left bg-blue-400 ${isActive ? 'scale-x-100' : 'scale-x-0'}`}
+          initial={false}
+          animate={{ scaleX: isActive ? 1 : 0 }}
           whileHover={{ scaleX: 1 }}
           transition={{ duration: 0.2 }}
         />
@@ -152,14 +140,14 @@ const ContactButton = memo(() => (
       <motion.button
         whileHover={{ scale: 1.03 }}
         whileTap={{ scale: 0.97 }}
-        className='group relative flex items-center gap-2 overflow-hidden rounded-full bg-emerald-500/10 px-6 py-2.5 text-sm font-medium tracking-wide text-white transition-all duration-300 hover:bg-emerald-500/20'
+        className='group relative flex items-center gap-2 overflow-hidden rounded-full bg-blue-500/10 px-6 py-2.5 text-sm font-medium tracking-wide text-white transition-all duration-300 hover:bg-blue-500/20'
       >
         <span className='relative z-10 transition-transform duration-300 group-hover:translate-x-[-4px]'>
           CONTACT
         </span>
         <motion.svg
           xmlns='http://www.w3.org/2000/svg'
-          className='relative z-10 h-4 w-4 text-emerald-300 transition-all duration-300 group-hover:translate-x-1'
+          className='relative z-10 h-4 w-4 text-blue-400 transition-all duration-300 group-hover:translate-x-1'
           fill='none'
           viewBox='0 0 24 24'
           stroke='currentColor'
@@ -171,7 +159,7 @@ const ContactButton = memo(() => (
             d='M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z'
           />
         </motion.svg>
-        <div className='absolute inset-0 -z-10 bg-gradient-to-r from-emerald-500/0 via-emerald-500/5 to-emerald-500/0 opacity-0 transition-opacity duration-300 group-hover:opacity-100' />
+        <div className='absolute inset-0 -z-10 bg-gradient-to-r from-blue-500/0 via-blue-500/5 to-blue-500/0 opacity-0 transition-opacity duration-300 group-hover:opacity-100' />
       </motion.button>
     </Link>
   </motion.div>

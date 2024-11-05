@@ -79,10 +79,10 @@ const gtPantheon = localFont({
 });
 
 export const metadata: Metadata = {
-  metadataBase: new URL('https://guestos.ai'),
-  title: 'GuestOS | The AI Concierge for Hospitality',
+  metadataBase: new URL('https://cmdiagnostics.com'),
+  title: 'CM Diagnostics | Advanced CCM Screening & AI Diagnostics',
   description:
-    'GuestOS is the leading AI concierge platform designed for the hospitality industry, offering 24/7 multilingual support and personalized guest experiences.',
+    'CM Diagnostics develops accessible genetic screening and AI-powered imaging analysis for cerebral cavernous malformations (CCM), bringing advanced diagnostics to underserved communities worldwide.',
   viewport: {
     width: 'device-width',
     initialScale: 1,
@@ -92,34 +92,45 @@ export const metadata: Metadata = {
   icons: [{ rel: 'icon', url: '/favicon.ico' }],
   twitter: {
     card: 'summary_large_image',
-    site: '@guestosai',
-    creator: '@guestosai',
+    site: '@cmdiagnostics',
+    creator: '@cmdiagnostics',
     images: [
       {
         url: '/assets/og.png',
         width: 1200,
         height: 630,
-        alt: 'GuestOS - The AI Concierge for Hospitality',
+        alt: 'CM Diagnostics - Advanced CCM Screening & AI Diagnostics',
       },
     ],
   },
   openGraph: {
     type: 'website',
     locale: 'en_US',
-    url: 'https://guestos.ai',
-    siteName: 'GuestOS',
-    title: 'GuestOS | The AI Concierge for Hospitality',
+    url: 'https://cmdiagnostics.com',
+    siteName: 'CM Diagnostics',
+    title: 'CM Diagnostics | Advanced CCM Screening & AI Diagnostics',
     description:
-      'GuestOS is the leading AI concierge platform designed for the hospitality industry, offering 24/7 multilingual support and personalized guest experiences.',
+      'Building low-cost diagnostic tools for the cerebral cavernous malformation (CCM) patient population globally through genetic screening and AI-powered imaging analysis.',
     images: [
       {
         url: '/assets/og.png',
         width: 1200,
         height: 630,
-        alt: 'GuestOS - The AI Concierge for Hospitality',
+        alt: 'CM Diagnostics - Advanced CCM Screening & AI Diagnostics',
       },
     ],
   },
+  keywords: [
+    'CCM diagnostics',
+    'cerebral cavernous malformations',
+    'genetic screening',
+    'AI diagnostics',
+    'medical imaging',
+    'point-of-care testing',
+    'neurological diagnostics',
+    'healthcare technology',
+    'medical devices',
+  ],
 };
 
 export default function RootLayout({
