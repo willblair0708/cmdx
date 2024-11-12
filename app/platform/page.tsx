@@ -125,7 +125,7 @@ export default function ProductsPage() {
               }
             />
 
-            <section className='relative min-h-screen'>
+            {/* <section className='relative min-h-screen'>
               <div className='mx-auto max-w-7xl px-4 py-24 sm:px-6 lg:px-8'>
                 <motion.h2
                   initial={{ opacity: 0, y: 20 }}
@@ -155,7 +155,7 @@ export default function ProductsPage() {
                   </ProductSectionWrapper>
                 </div>
               </div>
-            </section>
+            </section> */}
           </motion.main>
         </motion.div>
       </AnimatePresence>
