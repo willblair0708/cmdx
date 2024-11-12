@@ -222,7 +222,8 @@ const Footer: React.FC = () => {
             variants={itemVariants}
             className='text-xs tracking-wider text-white/30'
           >
-            &copy; {new Date().getFullYear()} Axonara Bio. All rights reserved.
+            &copy; {new Date().getFullYear()} Axonara Biosciences. All rights
+            reserved.
           </motion.p>
           <motion.div
             variants={itemVariants}
