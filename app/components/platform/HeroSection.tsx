@@ -38,8 +38,7 @@ export default function HeroSection({
 
       <div className='relative z-10'>
         <Navbar isFixed={false} />
-
-        <div className='mx-auto max-w-7xl px-4 pt-32 sm:px-6 lg:px-8'>
+        <div className='mx-auto mb-40 max-w-7xl px-4 pt-60 sm:px-6 lg:px-8'>
           <div className='grid gap-12 lg:grid-cols-2 lg:gap-24'>
             {/* Left Column - Text */}
             <motion.div
@@ -79,14 +78,14 @@ export default function HeroSection({
                 transition={{ duration: 0.6, delay: 0.4 }}
                 className='mb-8 text-xl leading-relaxed text-white/80'
               >
-                Introducing the first integrated diagnostic platform for CCM -
-                combining portable genetic screening devices with AI-powered
-                imaging analysis to revolutionize early detection and
+                Introducing the first integrated diagnostic platform for CCM
+                which combines portable genetic screening devices with our
+                AI-powered imaging analysis to revolutionize early detection and
                 monitoring.
               </motion.p>
 
               {/* Key Metrics */}
-              <motion.div
+              {/* <motion.div
                 initial={{ opacity: 0, y: 20 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.6, delay: 0.5 }}
@@ -119,7 +118,7 @@ export default function HeroSection({
                     Cost Savings
                   </p>
                 </div>
-              </motion.div>
+              </motion.div> */}
             </motion.div>
 
             {/* Right Column - Product Visualization */}

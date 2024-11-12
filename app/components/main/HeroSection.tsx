@@ -95,13 +95,13 @@ export default function HeroSection({ id, isMobile }: HeroSectionProps) {
         <Navbar isFixed={false} />
 
         <div className='relative mx-auto flex min-h-[calc(100vh-80px)] w-full max-w-7xl flex-col justify-center px-4 sm:px-6 lg:px-8'>
-          <div className='max-w-3xl'>
+          <div className='max-w-3xl pt-20 lg:pt-0'>
             {/* Innovation Badge */}
             <motion.div
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.8 }}
-              className='mb-8 inline-flex items-center gap-3 rounded-full border border-[#A90A0C]/10 bg-gradient-to-r from-[#A90A0C]/5 to-transparent px-5 py-2 backdrop-blur-sm'
+              className='mb-6 inline-flex items-center gap-3 rounded-full border border-[#A90A0C]/10 bg-gradient-to-r from-[#A90A0C]/5 to-transparent px-5 py-2 backdrop-blur-sm sm:mb-8'
             >
               <motion.div
                 animate={{
@@ -120,19 +120,19 @@ export default function HeroSection({ id, isMobile }: HeroSectionProps) {
               </span>
             </motion.div>
 
-            {/* Main Heading with Neural Animation */}
+            {/* Main Heading */}
             <motion.div
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ delay: 0.2, duration: 0.8 }}
-              className='relative mb-6'
+              className='relative mb-4 sm:mb-6'
             >
-              <h1 className='font-light text-4xl leading-tight tracking-tight text-white sm:text-5xl lg:text-6xl'>
+              <h1 className='font-light text-3xl leading-[1.2] tracking-tight text-white sm:text-4xl md:text-5xl lg:text-6xl'>
                 Deep-Tech Diagnostics for
                 <br />
-                <span className='relative'>
+                <span className='relative mt-2 inline-block'>
                   <span className='relative z-10 bg-gradient-to-r from-[#808080] to-[#A8A8A8] bg-clip-text text-transparent'>
-                    Neurological Disorders
+                    Neurology Rare Disease
                   </span>
                   <motion.span
                     className='absolute bottom-0 left-0 h-[2px] w-0 bg-gradient-to-r from-[#A90A0C] to-transparent'
@@ -143,24 +143,24 @@ export default function HeroSection({ id, isMobile }: HeroSectionProps) {
               </h1>
             </motion.div>
 
-            {/* Description with Fade-in Lines */}
+            {/* Description */}
             <motion.p
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ delay: 0.4, duration: 0.8 }}
-              className='mb-12 max-w-2xl space-y-4 text-lg leading-relaxed text-white/70'
+              className='mb-8 max-w-2xl text-base leading-relaxed text-white/70 sm:mb-12 sm:text-lg'
             >
               Pioneering accessible genetic screening and AI-powered imaging
               analysis for cerebral cavernous malformations, bringing advanced
               diagnostics to underserved communities worldwide.
             </motion.p>
 
-            {/* Enhanced CTA Buttons */}
+            {/* CTA Buttons */}
             <motion.div
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ delay: 0.6, duration: 0.8 }}
-              className='flex flex-wrap gap-4'
+              className='flex flex-wrap gap-3 sm:gap-4'
             >
               <Link
                 href='/platform'
