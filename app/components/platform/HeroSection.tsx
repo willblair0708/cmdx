@@ -191,7 +191,7 @@ export default function HeroSection({
             transition={{ duration: 0.6, delay: 0.7 }}
             className='absolute bottom-12 left-1/2 flex -translate-x-1/2 flex-col items-center gap-2'
           >
-            <button
+            {/* <button
               onClick={onScrollToNext}
               className='group flex flex-col items-center gap-2'
             >
@@ -203,7 +203,7 @@ export default function HeroSection({
                 transition={{ duration: 1.5, repeat: Infinity }}
                 className='h-12 w-px bg-gradient-to-b from-[#A90A0C]/50 to-transparent'
               />
-            </button>
+            </button> */}
           </motion.div>
         </div>
       </div>

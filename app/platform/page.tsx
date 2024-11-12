@@ -86,15 +86,26 @@ export default function ProductsPage() {
       <AnimatePresence mode='wait'>
         <motion.div
           key='products-page'
-          className='min-h-screen w-screen bg-gradient-to-b from-gray-950 to-blue-950/90 font-sans'
+          className='relative min-h-screen w-screen bg-[#0A192F]'
         >
+          {/* Background Elements */}
+          <div className='fixed inset-0'>
+            <div className='absolute inset-0 bg-[url("/assets/patterns/grid.svg")] opacity-[0.03]' />
+            <div className='absolute inset-0 bg-gradient-to-b from-[#0A192F] via-[#112240] to-[#0A192F]' />
+            <div className='bg-gradient-radial absolute inset-0 from-[#A90A0C]/5 via-transparent to-transparent' />
+
+            {/* Ambient Light Effects */}
+            <div className='absolute left-0 top-0 h-[800px] w-[800px] -translate-x-1/2 rounded-full bg-[#A90A0C]/5 blur-[120px]' />
+            <div className='absolute right-0 top-1/2 h-[600px] w-[600px] translate-x-1/2 rounded-full bg-[#112240]/30 blur-[120px]' />
+          </div>
+
           <AnimatePresence>
             {showNavbar && (
               <motion.div
                 className='fixed top-0 z-50 w-full'
-                initial={{ opacity: 0, y: -100 }}
+                initial={{ opacity: 0, y: -20 }}
                 animate={{ opacity: 1, y: 0 }}
-                exit={{ opacity: 0, y: -100 }}
+                exit={{ opacity: 0, y: -20 }}
                 transition={{ duration: 0.3 }}
               >
                 <ProductNavbar currentProduct={currentProduct} />
@@ -102,29 +113,24 @@ export default function ProductsPage() {
             )}
           </AnimatePresence>
 
-          <motion.main
-            ref={containerRef}
-            initial='hidden'
-            animate='visible'
-            variants={containerVariants}
-            className='relative'
-          >
+          <motion.main className='relative'>
             <HeroSection
-              id='product-section-0'
-              bgColor='#1019EC'
-              onScrollToNext={() => {
-                document
-                  .getElementById('products-section')
-                  ?.scrollIntoView({ behavior: 'smooth' });
-              }}
+              id='hero-section'
+              bgColor='#0A192F'
+              onScrollToNext={() =>
+                containerRef.current?.scrollTo({
+                  top: window.innerHeight,
+                  behavior: 'smooth',
+                })
+              }
             />
 
-            {/* Products Section */}
-            <section id='products-section' className='py-24 sm:py-32'>
-              <div className='mx-auto max-w-7xl px-4 sm:px-6 lg:px-8'>
+            <section className='relative min-h-screen'>
+              <div className='mx-auto max-w-7xl px-4 py-24 sm:px-6 lg:px-8'>
                 <motion.h2
                   initial={{ opacity: 0, y: 20 }}
-                  animate={{ opacity: 1, y: 0 }}
+                  whileInView={{ opacity: 1, y: 0 }}
+                  viewport={{ once: true }}
                   transition={{ duration: 0.6 }}
                   className='mb-16 font-light text-3xl tracking-tight text-white sm:text-4xl'
                 >
@@ -136,16 +142,15 @@ export default function ProductsPage() {
                   >
                     <GeneticScreeningSection
                       id='genetic-screening-section'
-                      bgColor='#18181B'
+                      bgColor='#0A192F'
                     />
                   </ProductSectionWrapper>
-
                   <ProductSectionWrapper
                     onInView={() => setCurrentProduct('AI Diagnostics')}
                   >
                     <DiagnosticAISection
                       id='diagnostic-ai-section'
-                      bgColor='#18181B'
+                      bgColor='#0A192F'
                     />
                   </ProductSectionWrapper>
                 </div>

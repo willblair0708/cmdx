@@ -52,16 +52,26 @@ export default function ProductSection({
       className='relative h-full'
       ref={ref}
     >
-      <div className='group relative h-full overflow-hidden rounded-2xl border border-white/5 bg-gradient-to-b from-[#0A192F] via-[#112240] to-[#0A192F] transition-all duration-500 hover:border-white/10'>
+      <div className='group relative h-full overflow-hidden rounded-2xl border border-white/5 bg-[#0A192F] transition-all duration-500 hover:border-white/10'>
         {/* Background Elements */}
-        <div className='absolute inset-0 bg-[url("/assets/patterns/grid.svg")] opacity-[0.03]' />
-        <div className='bg-gradient-radial absolute inset-0 from-[#A90A0C]/5 via-transparent to-transparent opacity-0 transition-opacity duration-500 group-hover:opacity-100' />
+        <div className='absolute inset-0'>
+          {/* Grid Pattern */}
+          <div className='absolute inset-0 bg-[url("/assets/patterns/grid.svg")] opacity-[0.03]' />
+
+          {/* Gradient Overlays */}
+          <div className='absolute inset-0 bg-gradient-to-br from-[#112240] via-[#0A192F] to-[#0A192F]' />
+          <div className='bg-gradient-radial absolute inset-0 from-[#A90A0C]/5 via-transparent to-transparent opacity-0 transition-opacity duration-500 group-hover:opacity-100' />
+
+          {/* Additional Ambient Effects */}
+          <div className='absolute -left-1/2 top-0 h-[500px] w-[500px] rounded-full bg-[#A90A0C]/5 blur-[120px] transition-opacity duration-500 group-hover:opacity-70' />
+          <div className='absolute -right-1/2 bottom-0 h-[500px] w-[500px] rounded-full bg-[#112240]/30 blur-[120px] transition-opacity duration-500 group-hover:opacity-70' />
+        </div>
 
         {/* Content Container */}
         <div className='relative z-10 flex h-full flex-col p-8'>
           {/* Product Badge */}
           <motion.div variants={itemVariants} className='mb-4'>
-            <div className='inline-flex items-center gap-2 rounded-full border border-[#A90A0C]/10 bg-gradient-to-r from-[#A90A0C]/5 to-transparent px-4 py-1.5'>
+            <div className='inline-flex items-center gap-2 rounded-full border border-[#A90A0C]/10 bg-gradient-to-r from-[#A90A0C]/5 to-transparent px-4 py-1.5 shadow-lg shadow-black/5 backdrop-blur-sm'>
               <div className='h-1.5 w-1.5 rounded-full bg-[#A90A0C]/40' />
               <span className='text-xs font-medium uppercase tracking-wider text-white/70'>
                 {productName === 'Genetic Screening'
@@ -84,7 +94,7 @@ export default function ProductSection({
               className='object-cover transition-transform duration-700 group-hover:scale-105'
               quality={95}
             />
-            <div className='absolute inset-0 bg-gradient-to-t from-[#0A192F]/80 via-[#0A192F]/20 to-transparent' />
+            <div className='absolute inset-0 bg-gradient-to-t from-[#0A192F] via-[#0A192F]/50 to-transparent opacity-80' />
           </motion.div>
 
           {/* Text Content */}
