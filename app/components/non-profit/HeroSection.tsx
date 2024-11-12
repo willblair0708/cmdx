@@ -27,10 +27,7 @@ export default function HeroSection({
       transition={{ duration: 0.5 }}
     >
       {/* Background Overlays */}
-      <motion.div className='absolute inset-0'>
-        <div className='absolute inset-0 bg-[url("/assets/patterns/grid.svg")] opacity-[0.03]' />
-        <div className='bg-gradient-radial absolute inset-0 from-[#A90A0C]/5 via-transparent to-transparent' />
-      </motion.div>
+      <Background />
 
       <Navbar isFixed={false} />
 
@@ -147,3 +144,46 @@ const containerVariants = {
     },
   },
 };
+
+const Background = () => (
+  <motion.div className='absolute inset-0 z-0'>
+    <div className='absolute inset-0'>
+      {/* Base Gradient */}
+      <div className='absolute inset-0 bg-gradient-to-b from-[#0A192F] via-[#112240] to-[#0A192F]' />
+      
+      {/* Neural Network Effect */}
+      <motion.div
+        animate={{
+          scale: [1, 1.1, 1],
+          opacity: [0.3, 0.2, 0.3],
+        }}
+        transition={{
+          duration: 15,
+          repeat: Infinity,
+          ease: 'easeInOut',
+        }}
+        className='absolute inset-0'
+        style={{
+          background: 'radial-gradient(circle at 50% 50%, rgba(169,10,12,0.05) 0%, transparent 50%)',
+        }}
+      />
+
+      {/* Grid Pattern */}
+      <div className='absolute inset-0 bg-[url("/assets/patterns/grid.svg")] opacity-[0.03]' />
+      
+      {/* Dynamic Gradients */}
+      <motion.div
+        animate={{
+          opacity: [0.5, 0.3, 0.5],
+          scale: [1, 1.2, 1],
+        }}
+        transition={{
+          duration: 10,
+          repeat: Infinity,
+          ease: 'easeInOut',
+        }}
+        className='absolute -left-1/4 top-0 h-[800px] w-[800px] rounded-full bg-[#A90A0C]/10 blur-[120px]'
+      />
+    </div>
+  </motion.div>
+);
