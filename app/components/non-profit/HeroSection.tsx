@@ -150,7 +150,7 @@ const Background = () => (
     <div className='absolute inset-0'>
       {/* Base Gradient */}
       <div className='absolute inset-0 bg-gradient-to-b from-[#0A192F] via-[#112240] to-[#0A192F]' />
-      
+
       {/* Neural Network Effect */}
       <motion.div
         animate={{
@@ -164,13 +164,14 @@ const Background = () => (
         }}
         className='absolute inset-0'
         style={{
-          background: 'radial-gradient(circle at 50% 50%, rgba(169,10,12,0.05) 0%, transparent 50%)',
+          background:
+            'radial-gradient(circle at 50% 50%, rgba(169,10,12,0.05) 0%, transparent 50%)',
         }}
       />
 
       {/* Grid Pattern */}
       <div className='absolute inset-0 bg-[url("/assets/patterns/grid.svg")] opacity-[0.03]' />
-      
+
       {/* Dynamic Gradients */}
       <motion.div
         animate={{
