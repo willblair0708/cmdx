@@ -1,4 +1,3 @@
-import Image from 'next/image';
 import { useRef } from 'react';
 
 import { motion } from 'framer-motion';
@@ -11,13 +10,6 @@ interface HeroSectionProps {
   isMobile: boolean;
 }
 
-const HERO_IMAGE_DIMENSIONS = {
-  width: 1920,
-  height: 1080,
-  mobileWidth: 828,
-  mobileHeight: 1792,
-};
-
 export default function HeroSection({
   id,
   bgColor,
@@ -29,32 +21,21 @@ export default function HeroSection({
     <motion.section
       ref={sectionRef}
       id={id}
-      className='relative h-screen overflow-hidden'
+      className='relative min-h-screen overflow-hidden bg-[#0A192F]'
       initial={{ opacity: 0 }}
       animate={{ opacity: 1 }}
       transition={{ duration: 0.5 }}
     >
-      {/* Background Image & Overlays */}
+      {/* Background Overlays */}
       <motion.div className='absolute inset-0'>
-        <Image
-          src='/assets/about/about_header.webp'
-          alt='Medical Education Initiative'
-          fill
-          quality={95}
-          priority
-          className='object-cover'
-          sizes={`(max-width: 768px) ${HERO_IMAGE_DIMENSIONS.mobileWidth}px, ${HERO_IMAGE_DIMENSIONS.width}px`}
-        />
-        {/* Enhanced Gradient Overlays */}
-        <div className='absolute inset-0 bg-gradient-to-b from-[#0A192F]/90 via-[#0A192F]/80 to-[#0A192F]/95' />
         <div className='absolute inset-0 bg-[url("/assets/patterns/grid.svg")] opacity-[0.03]' />
         <div className='bg-gradient-radial absolute inset-0 from-[#A90A0C]/5 via-transparent to-transparent' />
       </motion.div>
 
       <Navbar isFixed={false} />
 
-      <div className='relative z-10 mx-auto flex h-full max-w-7xl flex-col justify-center px-4 sm:px-6 lg:px-8'>
-        <div className='max-w-4xl'>
+      <div className='relative z-10 mx-auto flex min-h-[calc(100vh-80px)] max-w-7xl flex-col justify-center px-4 sm:px-6 lg:px-8'>
+        <div className='max-w-3xl'>
           {/* Mission Badge */}
           <motion.div
             variants={itemVariants}

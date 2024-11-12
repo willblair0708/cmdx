@@ -62,7 +62,7 @@ const formFields = [
   {
     id: 'researchArea',
     label: 'RESEARCH AREA',
-    placeholder: 'e.g. Drug Discovery, Cell Biology, Disease Modeling',
+    placeholder: 'e.g. Genetic Screening, Clinical Research, Disease Diagnosis',
     type: 'text',
     width: 'half',
   },
@@ -70,7 +70,7 @@ const formFields = [
     id: 'message',
     label: 'MESSAGE',
     placeholder:
-      'Tell us about your research goals. How could our AI-powered virtual cell models help accelerate your drug discovery or disease research?',
+      'Tell us about your diagnostic needs. How could our AI-powered genetic screening and imaging analysis help improve your clinical outcomes?',
     type: 'textarea',
     width: 'full',
   },
@@ -278,7 +278,7 @@ export default function HeroSection({
             { action: 'CONTACT' }
           );
 
-          const response = await fetch('https://getform.io/f/bollgpza', {
+          const response = await fetch('mailto:edward@axonara.bio', {
             method: 'POST',
             headers: {
               'Content-Type': 'application/x-www-form-urlencoded',
@@ -296,7 +296,7 @@ export default function HeroSection({
 
           if (response.ok) {
             toast.success(
-              'Message sent! Our team will contact you shortly to discuss your research needs.'
+              'Message sent! Our team will contact you shortly to discuss your needs.'
             );
             form.reset();
           } else {
@@ -473,9 +473,9 @@ export default function HeroSection({
                     />
                   </svg>
                   <p className='text-sm text-white opacity-80'>
-                    Share your research objectives and discover how our virtual
-                    cell models can enhance your drug discovery pipeline through
-                    accurate in silico simulations.
+                    Share your diagnostic needs and discover how our AI-powered
+                    genetic screening and imaging analysis can enhance your
+                    clinical outcomes.
                   </p>
                 </div>
 

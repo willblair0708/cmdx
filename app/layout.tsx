@@ -7,8 +7,7 @@ import { GoogleAnalytics } from '@next/third-parties/google';
 import { Analytics } from '@vercel/analytics/react';
 import { Toaster } from 'sonner';
 
-import CookieBanner from '@/app/components/CookieBanner';
-
+// import CookieBanner from '@/app/components/CookieBanner';
 import './globals.css';
 
 const geistMono = localFont({
@@ -79,10 +78,11 @@ const gtPantheon = localFont({
 });
 
 export const metadata: Metadata = {
-  metadataBase: new URL('https://cmdiagnostics.com'),
-  title: 'CM Diagnostics | Advanced CCM Screening & AI Diagnostics',
+  metadataBase: new URL('https://axonara.bio'),
+  title:
+    'Axonara | AI-Powered Diagnostics for Cerebral Cavernous Malformations',
   description:
-    'CM Diagnostics develops accessible genetic screening and AI-powered imaging analysis for cerebral cavernous malformations (CCM), bringing advanced diagnostics to underserved communities worldwide.',
+    'Axonara develops accessible genetic screening and AI-powered imaging analysis for cerebral cavernous malformations (CCM), bringing advanced diagnostics to underserved communities worldwide.',
   viewport: {
     width: 'device-width',
     initialScale: 1,
@@ -92,25 +92,26 @@ export const metadata: Metadata = {
   icons: [{ rel: 'icon', url: '/favicon.ico' }],
   twitter: {
     card: 'summary_large_image',
-    site: '@cmdiagnostics',
-    creator: '@cmdiagnostics',
+    site: '@axonara',
+    creator: '@axonara',
     images: [
       {
         url: '/assets/og.png',
         width: 1200,
         height: 630,
-        alt: 'CM Diagnostics - Advanced CCM Screening & AI Diagnostics',
+        alt: 'Axonara - AI-Powered Diagnostics for Cerebral Cavernous Malformations',
       },
     ],
   },
   openGraph: {
     type: 'website',
     locale: 'en_US',
-    url: 'https://cmdiagnostics.com',
-    siteName: 'CM Diagnostics',
-    title: 'CM Diagnostics | Advanced CCM Screening & AI Diagnostics',
+    url: 'https://axonara.bio',
+    siteName: 'Axonara',
+    title:
+      'Axonara | AI-Powered Diagnostics for Cerebral Cavernous Malformations',
     description:
-      'Building low-cost diagnostic tools for the cerebral cavernous malformation (CCM) patient population globally through genetic screening and AI-powered imaging analysis.',
+      'Axonara develops accessible genetic screening and AI-powered imaging analysis for cerebral cavernous malformations (CCM), bringing advanced diagnostics to underserved communities worldwide.',
     images: [
       {
         url: '/assets/og.png',
@@ -170,7 +171,7 @@ export default function RootLayout({
           <Toaster />
           <main className='flex-grow'>{children}</main>
         </div>
-        <CookieBanner />
+        {/* <CookieBanner /> */}
         <Analytics />
       </body>
     </html>
