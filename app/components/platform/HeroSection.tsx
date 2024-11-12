@@ -266,6 +266,9 @@ export default function HeroSection({
               </div>
             </motion.div>
           </div>
+
+          {/* Added bottom spacing */}
+          <div className='pb-32' />
         </div>
       </motion.div>
     </motion.section>
