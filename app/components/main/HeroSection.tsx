@@ -60,12 +60,12 @@ export default function HeroSection({ id, isMobile }: HeroSectionProps) {
 
   const [headerSize, setHeaderSize] = useState('text-[32px]');
 
-  // Update particle colors for medical/diagnostic feel
+  // Update particle colors for modern tech feel
   const PARTICLE_COLORS = [
-    'rgba(96, 165, 250, 0.5)', // blue-400
-    'rgba(147, 197, 253, 0.4)', // blue-300
-    'rgba(59, 130, 246, 0.6)', // blue-500
-    'rgba(37, 99, 235, 0.4)', // blue-600
+    'rgba(169, 10, 12, 0.3)',  // #A90A0C with opacity
+    'rgba(30, 58, 138, 0.3)',  // dark blue
+    'rgba(169, 10, 12, 0.4)',  // #A90A0C slightly stronger
+    'rgba(30, 58, 138, 0.4)',  // dark blue stronger
   ];
 
   // Interactive particle system
@@ -197,34 +197,27 @@ export default function HeroSection({ id, isMobile }: HeroSectionProps) {
     <motion.section
       ref={sectionRef}
       id={id}
-      className='relative h-screen overflow-hidden bg-gradient-to-b from-gray-950 via-blue-950/90 to-gray-950 text-white'
-      initial={{ opacity: 0 }}
-      animate={{ opacity: 1 }}
-      transition={{ duration: 1 }}
+      className='relative h-screen overflow-hidden bg-gradient-to-b from-[#0A192F] via-[#112240] to-[#0A192F]'
     >
       {/* Background effects */}
       <motion.div className='absolute inset-0 z-0'>
-        {/* Medical imagery background */}
         <div className='absolute inset-0'>
           <Image
-            src='/assets/main/Nerves.jpeg'
-            alt='Medical visualization'
+            src='/assets/main/neural-network.jpg'
+            alt='Neural network visualization'
             fill
             priority
             quality={90}
-            className='object-cover'
+            className='object-cover opacity-30'
           />
-          <div className='absolute inset-0 bg-gradient-to-b from-gray-950/90 via-blue-950/80 to-gray-950/90' />
+          <div className='absolute inset-0 bg-gradient-to-b from-[#0A192F]/90 via-[#112240]/80 to-[#0A192F]/90' />
         </div>
-
-        {/* Particle animation canvas */}
         <canvas
           ref={canvasRef}
           className='absolute inset-0 z-10'
           style={{
             mixBlendMode: 'screen',
             opacity: 0.3,
-            filter: 'blur(0.5px)',
           }}
         />
       </motion.div>
@@ -232,20 +225,17 @@ export default function HeroSection({ id, isMobile }: HeroSectionProps) {
       <div className='relative z-20 flex h-full flex-col'>
         <Navbar isFixed={false} />
 
-        <motion.div
-          className='relative mx-auto flex max-w-7xl flex-grow flex-col justify-center px-4 sm:px-6 lg:px-8'
-          style={{ opacity, scale }}
-        >
+        <motion.div className='relative mx-auto flex max-w-7xl flex-grow flex-col justify-center px-4 sm:px-6 lg:px-8'>
           <div className='relative max-w-4xl'>
             {/* Category badge */}
             <motion.div
               variants={fadeInVariants}
               initial='hidden'
               animate={isInView ? 'visible' : 'hidden'}
-              className='mb-8 inline-flex items-center gap-3 rounded-full border border-blue-500/10 bg-gradient-to-r from-blue-500/5 via-blue-400/5 to-transparent px-5 py-2 backdrop-blur-sm'
+              className='mb-8 inline-flex items-center gap-3 rounded-full border border-[#A90A0C]/10 bg-gradient-to-r from-[#A90A0C]/5 to-transparent px-5 py-2 backdrop-blur-sm'
             >
               <span className='bg-gradient-to-r from-white via-white to-white/80 bg-clip-text text-sm font-medium text-transparent'>
-                Genetic Screening • AI Diagnostics • Global Healthcare
+                Genetic Screening • AI Diagnostics • Preventative Medicine
               </span>
             </motion.div>
 
@@ -256,12 +246,12 @@ export default function HeroSection({ id, isMobile }: HeroSectionProps) {
               animate={isInView ? 'visible' : 'hidden'}
               className='mb-6 text-4xl font-book leading-tight tracking-tight sm:text-5xl lg:text-6xl'
             >
-              <span className='bg-gradient-to-r from-white via-white to-white/90 bg-clip-text text-transparent'>
-                Advancing CCM Diagnostics
+              <span className='text-white'>
+                Deep-Tech Diagnostics for
               </span>
               <br />
-              <span className='bg-gradient-to-r from-blue-400 via-blue-300 to-blue-200 bg-clip-text text-transparent'>
-                Through Innovation
+              <span className='text-[#808080]'>
+                Neurological Disorders
               </span>
             </motion.h1>
 
@@ -273,9 +263,7 @@ export default function HeroSection({ id, isMobile }: HeroSectionProps) {
               className='relative mb-12 max-w-2xl'
             >
               <p className='text-lg leading-relaxed text-neutral-200/90 sm:text-xl'>
-                Building accessible genetic screening and AI-powered imaging
-                analysis for cerebral cavernous malformations, bringing advanced
-                diagnostics to underserved communities worldwide.
+                Pioneering accessible genetic screening and AI-powered imaging analysis for cerebral cavernous malformations, bringing advanced diagnostics to underserved communities worldwide.
               </p>
             </motion.div>
 
@@ -288,24 +276,18 @@ export default function HeroSection({ id, isMobile }: HeroSectionProps) {
             >
               <Link
                 href='/platform'
-                className='group relative overflow-hidden rounded-xl bg-gradient-to-r from-blue-600 via-blue-500 to-blue-600 px-8 py-4 text-sm font-semibold text-white transition-all duration-300 hover:scale-[1.02] hover:shadow-lg hover:shadow-blue-500/20'
+                className='group relative overflow-hidden rounded-xl bg-blue-500 px-8 py-4 text-sm font-semibold text-white transition-all duration-300 hover:scale-[1.02] hover:shadow-lg hover:shadow-blue-500/20'
               >
                 <span className='relative flex items-center gap-2'>
-                  Our Technology
+                  Our Platform
                   <svg className='h-4 w-4' viewBox='0 0 16 16' fill='none'>
-                    <path
-                      d='M1 8h14M9 2l6 6-6 6'
-                      stroke='currentColor'
-                      strokeWidth='2'
-                      strokeLinecap='round'
-                      strokeLinejoin='round'
-                    />
+                    <path d='M1 8h14M9 2l6 6-6 6' stroke='currentColor' strokeWidth='2' strokeLinecap='round' strokeLinejoin='round'/>
                   </svg>
                 </span>
               </Link>
               <Link
                 href='/research'
-                className='group relative overflow-hidden rounded-md border border-blue-500/10 bg-white/[0.02] px-6 py-4 text-sm font-semibold text-white backdrop-blur-sm transition-all duration-300 hover:bg-white/[0.04]'
+                className='group relative overflow-hidden rounded-md border border-[#A90A0C]/10 bg-white/[0.02] px-6 py-4 text-sm font-semibold text-white backdrop-blur-sm transition-all duration-300 hover:bg-white/[0.04]'
               >
                 Clinical Research
               </Link>
@@ -318,25 +300,25 @@ export default function HeroSection({ id, isMobile }: HeroSectionProps) {
           variants={fadeInVariants}
           initial='hidden'
           animate={isInView ? 'visible' : 'hidden'}
-          className='absolute bottom-12 right-12 max-w-sm rounded-2xl border border-blue-500/10 bg-gradient-to-r from-blue-500/5 via-blue-400/5 to-transparent p-6 backdrop-blur-sm'
+          className='absolute bottom-12 right-12 max-w-sm rounded-2xl border border-[#A90A0C]/10 bg-gradient-to-r from-[#A90A0C]/5 to-transparent p-6 backdrop-blur-sm'
         >
           <div className='space-y-6'>
             <div>
-              <p className='text-sm font-medium uppercase tracking-wider text-blue-400/80'>
-                Global Impact
+              <p className='text-sm font-medium uppercase tracking-wider text-[#A90A0C]'>
+                Clinical Impact
               </p>
               <p className='mt-2 text-lg font-book leading-snug text-white/90'>
-                Expanding access to CCM diagnostics across Mexico and Spain
+                Advancing CCM diagnostics across Mexico and Spain
               </p>
             </div>
-            <div className='grid grid-cols-2 gap-4 border-t border-blue-500/10 pt-4'>
-              <div>
-                <p className='text-2xl font-semibold text-white'>2+</p>
-                <p className='text-sm text-blue-200/60'>Countries Served</p>
-              </div>
+            <div className='grid grid-cols-2 gap-4 border-t border-[#A90A0C]/10 pt-4'>
               <div>
                 <p className='text-2xl font-semibold text-white'>95%</p>
-                <p className='text-sm text-blue-200/60'>Diagnostic Accuracy</p>
+                <p className='text-sm text-white/60'>Detection Accuracy</p>
+              </div>
+              <div>
+                <p className='text-2xl font-semibold text-white'>90%</p>
+                <p className='text-sm text-white/60'>Cost Reduction</p>
               </div>
             </div>
           </div>
