@@ -1,9 +1,9 @@
 'use client';
 
+import Image from 'next/image';
 import Link from 'next/link';
 import { usePathname } from 'next/navigation';
 import { memo, useCallback, useState } from 'react';
-import Image from 'next/image';
 
 import {
   AnimatePresence,
@@ -52,7 +52,7 @@ export default function Navbar({ isFixed = true }: NavbarProps) {
       animate='visible'
       className={`${
         isFixed ? 'fixed' : 'absolute'
-      } left-0 right-0 z-50 flex w-full items-center justify-between px-6 backdrop-blur-sm py-4 sm:px-12 sm:py-5`}
+      } left-0 right-0 z-50 flex w-full items-center justify-between px-6 py-4 backdrop-blur-sm sm:px-12 sm:py-5`}
     >
       <NavLogo />
       <DesktopMenu pathname={pathname} />
@@ -79,11 +79,11 @@ const NavLogo = memo(() => (
         className='transition-all duration-300'
       >
         <Image
-          src="/assets/axonara.svg"
-          alt="Axonara Bio Logo"
+          src='/assets/axonara.svg'
+          alt='Axonara Bio Logo'
           width={120}
           height={32}
-          className="h-8 w-auto"
+          className='h-8 w-auto'
         />
       </motion.div>
     </Link>
