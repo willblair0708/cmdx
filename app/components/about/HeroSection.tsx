@@ -39,40 +39,67 @@ export default function HeroSection({
         {/* Base Gradient */}
         <div className='absolute inset-0 bg-gradient-to-b from-[#0A192F] via-[#112240] to-[#0A192F]' />
 
-        {/* Neural Network Effect */}
+        {/* Animated Gradient Orbs */}
+        <motion.div
+          animate={{
+            scale: [1, 1.2, 1],
+            opacity: [0.5, 0.3, 0.5],
+          }}
+          transition={{
+            duration: 8,
+            repeat: Infinity,
+            ease: 'easeInOut',
+          }}
+          className='absolute -left-1/4 top-0 h-[800px] w-[800px] rounded-full bg-[#A90A0C]/10 blur-[120px]'
+        />
         <motion.div
           animate={{
             scale: [1, 1.1, 1],
             opacity: [0.3, 0.2, 0.3],
           }}
           transition={{
-            duration: 15,
+            duration: 7,
             repeat: Infinity,
             ease: 'easeInOut',
+            delay: 1,
           }}
-          className='absolute inset-0'
-          style={{
-            background:
-              'radial-gradient(circle at 50% 50%, rgba(169,10,12,0.05) 0%, transparent 50%)',
-          }}
+          className='absolute -right-1/4 bottom-0 h-[600px] w-[600px] rounded-full bg-[#112240]/30 blur-[100px]'
         />
 
         {/* Grid Pattern */}
         <div className='absolute inset-0 bg-[url("/assets/patterns/grid.svg")] opacity-[0.03]' />
 
-        {/* Dynamic Gradients */}
-        <motion.div
-          animate={{
-            opacity: [0.5, 0.3, 0.5],
-            scale: [1, 1.2, 1],
-          }}
-          transition={{
-            duration: 10,
-            repeat: Infinity,
-            ease: 'easeInOut',
-          }}
-          className='absolute -left-1/4 top-0 h-[800px] w-[800px] rounded-full bg-[#A90A0C]/10 blur-[120px]'
-        />
+        {/* Animated Lines */}
+        <div className='absolute inset-0 overflow-hidden'>
+          <motion.div
+            animate={{
+              y: [-1000, 1000],
+              opacity: [0, 0.5, 0],
+            }}
+            transition={{
+              duration: 20,
+              repeat: Infinity,
+              ease: 'linear',
+            }}
+            className='absolute left-1/4 h-[1000px] w-px bg-gradient-to-b from-transparent via-[#A90A0C]/20 to-transparent'
+          />
+          <motion.div
+            animate={{
+              y: [-1500, 1500],
+              opacity: [0, 0.3, 0],
+            }}
+            transition={{
+              duration: 25,
+              repeat: Infinity,
+              ease: 'linear',
+              delay: 5,
+            }}
+            className='absolute left-2/3 h-[1500px] w-px bg-gradient-to-b from-transparent via-[#A90A0C]/10 to-transparent'
+          />
+        </div>
+
+        {/* Particle Effect Overlay */}
+        <div className='bg-noise absolute inset-0 opacity-[0.02]' />
       </div>
 
       <Navbar isFixed={false} />

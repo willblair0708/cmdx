@@ -50,50 +50,31 @@ const AIIcon = () => (
 const Background = () => (
   <motion.div className='absolute inset-0 z-0'>
     <div className='absolute inset-0'>
-      {/* Enhanced Base Gradient */}
+      {/* Base Gradient */}
       <div className='absolute inset-0 bg-gradient-to-b from-[#0A192F] via-[#112240] to-[#0A192F]' />
 
-      {/* Animated Mesh Gradient */}
+      {/* Neural Network Effect */}
       <motion.div
         animate={{
-          scale: [1, 1.2, 1],
+          scale: [1, 1.1, 1],
           opacity: [0.3, 0.2, 0.3],
         }}
         transition={{
-          duration: 20,
+          duration: 15,
           repeat: Infinity,
           ease: 'easeInOut',
         }}
         className='absolute inset-0'
         style={{
           background:
-            'radial-gradient(circle at 50% 50%, rgba(169,10,12,0.08) 0%, transparent 70%)',
-          filter: 'blur(40px)',
+            'radial-gradient(circle at 50% 50%, rgba(169,10,12,0.05) 0%, transparent 50%)',
         }}
       />
 
-      {/* Enhanced Grid Pattern */}
+      {/* Grid Pattern */}
       <div className='absolute inset-0 bg-[url("/assets/patterns/grid.svg")] opacity-[0.03]' />
 
-      {/* Floating Particles */}
-      <motion.div
-        animate={{
-          backgroundPosition: ['0% 0%', '100% 100%'],
-        }}
-        transition={{
-          duration: 30,
-          repeat: Infinity,
-          ease: 'linear',
-        }}
-        className='absolute inset-0 opacity-30'
-        style={{
-          backgroundImage:
-            'radial-gradient(circle at center, rgba(169,10,12,0.1) 0%, transparent 8%)',
-          backgroundSize: '3% 3%',
-        }}
-      />
-
-      {/* Dynamic Light Effects */}
+      {/* Dynamic Gradients */}
       <motion.div
         animate={{
           opacity: [0.5, 0.3, 0.5],
@@ -105,20 +86,6 @@ const Background = () => (
           ease: 'easeInOut',
         }}
         className='absolute -left-1/4 top-0 h-[800px] w-[800px] rounded-full bg-[#A90A0C]/10 blur-[120px]'
-      />
-
-      {/* Secondary Light Effect */}
-      <motion.div
-        animate={{
-          opacity: [0.3, 0.15, 0.3],
-          scale: [1, 1.1, 1],
-        }}
-        transition={{
-          duration: 15,
-          repeat: Infinity,
-          ease: 'easeInOut',
-        }}
-        className='absolute -right-1/4 bottom-0 h-[600px] w-[600px] rounded-full bg-[#112240]/20 blur-[100px]'
       />
     </div>
   </motion.div>

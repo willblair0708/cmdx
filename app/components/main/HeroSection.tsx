@@ -40,7 +40,7 @@ const Background = () => (
         }}
       />
 
-      {/* Grid Pattern */}
+      {/* Synaptic Connections */}
       <div className='absolute inset-0 bg-[url("/assets/patterns/grid.svg")] opacity-[0.03]' />
 
       {/* Dynamic Gradients */}

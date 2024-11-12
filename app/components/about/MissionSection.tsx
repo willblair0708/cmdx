@@ -3,6 +3,8 @@ import { useInView } from 'react-intersection-observer';
 
 import { motion } from 'framer-motion';
 
+import Navbar from '../Navbar';
+
 interface MissionSectionProps {
   id: string;
   bgColor: string;
@@ -30,6 +32,7 @@ export default function MissionSection({
       variants={containerVariants}
       className='relative min-h-screen overflow-hidden bg-[#0A192F]'
     >
+      <Navbar isFixed={false} />
       <div className='absolute inset-0'>
         {/* Dynamic Background */}
         <div className='absolute inset-0 bg-[url("/assets/patterns/grid.svg")] opacity-[0.03]' />
@@ -37,7 +40,7 @@ export default function MissionSection({
         <div className='absolute -right-1/4 bottom-0 h-[600px] w-[600px] rounded-full bg-[#112240]/20 blur-[120px]' />
       </div>
 
-      <div className='mx-auto max-w-7xl px-4 py-24 sm:px-6 lg:px-8'>
+      <div className='mx-auto max-w-7xl px-4 py-36 sm:px-6 lg:px-8'>
         <div className='grid gap-16 lg:grid-cols-2 lg:gap-24'>
           {/* Left Column - Story */}
           <motion.div

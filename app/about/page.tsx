@@ -61,7 +61,7 @@ export default function AboutPage() {
             animate='visible'
             variants={containerVariants}
           >
-            <HeroSection id='section-0' bgColor='#123456' isMobile={isMobile} />
+            {/* <HeroSection id='section-0' bgColor='#123456' isMobile={isMobile} /> */}
 
             <motion.div ref={ref}>
               <MissionSection
