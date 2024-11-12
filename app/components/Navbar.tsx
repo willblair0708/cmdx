@@ -25,7 +25,14 @@ const navItems = [
 
 const navItemVariants = {
   hidden: { opacity: 0, y: -10 },
-  visible: { opacity: 1, y: 0, transition: { duration: 0.4, ease: 'easeOut' } },
+  visible: {
+    opacity: 1,
+    y: 0,
+    transition: {
+      duration: 0.5,
+      ease: [0.6, 0.05, 0.01, 0.9],
+    },
+  },
 };
 
 interface NavbarProps {
@@ -40,7 +47,7 @@ export default function Navbar({ isFixed = true }: NavbarProps) {
   const navBackground = useTransform(
     scrollY,
     [0, 100],
-    ['rgba(10, 25, 47, 0)', 'rgba(10, 25, 47, 0.85)']
+    ['rgba(10, 25, 47, 0)', 'rgba(10, 25, 47, 0.98)']
   );
 
   const toggleMenu = useCallback(() => setIsMenuOpen((prev) => !prev), []);
@@ -52,7 +59,7 @@ export default function Navbar({ isFixed = true }: NavbarProps) {
       animate='visible'
       className={`${
         isFixed ? 'fixed' : 'absolute'
-      } left-0 right-0 z-50 flex w-full items-center justify-between px-6 py-4 backdrop-blur-sm sm:px-12 sm:py-5`}
+      } left-0 right-0 z-50 flex w-full items-center justify-between border-b border-white/5 px-6 py-4 sm:px-12 sm:py-5`}
     >
       <NavLogo />
       <DesktopMenu pathname={pathname} />
@@ -74,8 +81,8 @@ const NavLogo = memo(() => (
   <motion.div variants={navItemVariants} className='flex items-center'>
     <Link href='/' scroll={false}>
       <motion.div
-        whileHover={{ scale: 1.03 }}
-        whileTap={{ scale: 0.97 }}
+        whileHover={{ scale: 1.02 }}
+        whileTap={{ scale: 0.98 }}
         className='transition-all duration-300'
       >
         <Image
@@ -83,7 +90,7 @@ const NavLogo = memo(() => (
           alt='Axonara Bio Logo'
           width={120}
           height={32}
-          className='h-8 w-auto'
+          className='h-8 w-auto drop-shadow-lg'
         />
       </motion.div>
     </Link>
@@ -94,8 +101,8 @@ NavLogo.displayName = 'NavLogo';
 
 const DesktopMenu = memo(({ pathname }: { pathname: string }) => (
   <motion.div
-    variants={{ visible: { transition: { staggerChildren: 0.08 } } }}
-    className='hidden items-center gap-8 sm:flex'
+    variants={{ visible: { transition: { staggerChildren: 0.05 } } }}
+    className='hidden items-center gap-10 sm:flex'
   >
     {navItems.map((item) => (
       <NavItem key={item.text} item={item} pathname={pathname} />
@@ -120,20 +127,26 @@ const NavItem = memo(
       <motion.div variants={navItemVariants} className='group relative'>
         <Link
           href={item.href}
-          className='text-sm font-medium tracking-wide text-white/80 transition-all hover:text-white'
+          className='relative text-sm font-medium tracking-wide text-white/70 transition-all duration-300 hover:text-white'
           scroll={false}
         >
           <span className='flex items-center'>{item.text}</span>
+          <motion.div
+            className={`absolute -bottom-1 left-0 right-0 h-[2px] origin-left bg-gradient-to-r from-[#A90A0C] to-[#A90A0C]/80`}
+            initial={{ scaleX: 0, opacity: 0 }}
+            animate={{
+              scaleX: isActive ? 1 : 0,
+              opacity: isActive ? 1 : 0,
+            }}
+            transition={{ duration: 0.2 }}
+          />
+          <motion.div
+            className='absolute -bottom-1 left-0 right-0 h-[2px] origin-left bg-gradient-to-r from-[#A90A0C]/80 to-[#A90A0C]/40'
+            initial={{ scaleX: 0, opacity: 0 }}
+            whileHover={{ scaleX: 1, opacity: 1 }}
+            transition={{ duration: 0.2 }}
+          />
         </Link>
-        <motion.div
-          className={`absolute -bottom-1 left-0 right-0 h-[2px] origin-left bg-[#A90A0C] ${
-            isActive ? 'scale-x-100' : 'scale-x-0'
-          }`}
-          initial={false}
-          animate={{ scaleX: isActive ? 1 : 0 }}
-          whileHover={{ scaleX: 1 }}
-          transition={{ duration: 0.2 }}
-        />
       </motion.div>
     );
   }
@@ -145,9 +158,9 @@ const ContactButton = memo(() => (
   <motion.div variants={navItemVariants}>
     <Link href='/contact' scroll={false}>
       <motion.button
-        whileHover={{ scale: 1.03 }}
-        whileTap={{ scale: 0.97 }}
-        className='group relative flex items-center gap-2 overflow-hidden rounded-full border border-[#A90A0C]/20 bg-[#A90A0C]/10 px-6 py-2.5 text-sm font-medium tracking-wide text-white transition-all duration-300 hover:bg-[#A90A0C]/20'
+        whileHover={{ scale: 1.02 }}
+        whileTap={{ scale: 0.98 }}
+        className='group relative flex items-center gap-2 overflow-hidden rounded-full border border-[#A90A0C]/20 bg-gradient-to-r from-[#A90A0C]/10 to-transparent px-6 py-2.5 text-sm font-medium tracking-wide text-white shadow-lg shadow-[#A90A0C]/5 transition-all duration-300 hover:border-[#A90A0C]/30 hover:shadow-xl hover:shadow-[#A90A0C]/10'
       >
         <span className='relative z-10 transition-transform duration-300 group-hover:translate-x-[-4px]'>
           CONTACT
@@ -166,7 +179,7 @@ const ContactButton = memo(() => (
             d='M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z'
           />
         </motion.svg>
-        <div className='absolute inset-0 -z-10 bg-gradient-to-r from-[#A90A0C]/0 via-[#A90A0C]/10 to-[#A90A0C]/0 opacity-0 transition-opacity duration-300 group-hover:opacity-100' />
+        <div className='absolute inset-0 -z-10 bg-gradient-to-r from-[#A90A0C]/0 via-[#A90A0C]/20 to-[#A90A0C]/0 opacity-0 transition-opacity duration-300 group-hover:opacity-100' />
       </motion.button>
     </Link>
   </motion.div>
@@ -191,8 +204,18 @@ const MobileMenuButton = memo(({ toggleMenu }: { toggleMenu: () => void }) => (
       xmlns='http://www.w3.org/2000/svg'
       className='text-[#A90A0C]'
     >
-      <path d='M0.5 1H28' stroke='currentColor' strokeWidth='1.5' />
-      <path d='M0.5 7H28' stroke='currentColor' strokeWidth='1.5' />
+      <path
+        d='M0.5 1H28'
+        stroke='currentColor'
+        strokeWidth='1.5'
+        strokeLinecap='round'
+      />
+      <path
+        d='M0.5 7H28'
+        stroke='currentColor'
+        strokeWidth='1.5'
+        strokeLinecap='round'
+      />
     </svg>
   </motion.button>
 ));

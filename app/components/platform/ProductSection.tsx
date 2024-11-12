@@ -9,22 +9,7 @@ interface ProductSectionProps {
   productName: string;
   productDescription: string;
   imageSrc: string;
-  features: Array<{
-    title: string;
-    description: string;
-    bulletPoints?: string[];
-  }>;
-  metrics?: Array<{
-    value: string;
-    label: string;
-    subtext: string;
-  }>;
-  certifications?: string[];
-  integrations?: string[];
 }
-
-const PRODUCT_DESCRIPTION =
-  'Too many people make decisions based on no data, or worse, bad data. Meet a family of simulation engines, built by our researchers alongside our category-defining partners. Engineered to provide clairvoyance for those who need it most.';
 
 export default function ProductSection({
   id,
@@ -32,7 +17,6 @@ export default function ProductSection({
   productName,
   productDescription,
   imageSrc,
-  features,
 }: ProductSectionProps) {
   const [ref, inView] = useInView({
     threshold: 0.1,
@@ -47,7 +31,6 @@ export default function ProductSection({
         duration: 0.6,
         ease: 'easeOut',
         staggerChildren: 0.1,
-        delayChildren: 0.2,
       },
     },
   };
@@ -57,86 +40,64 @@ export default function ProductSection({
     visible: {
       opacity: 1,
       y: 0,
-      transition: {
-        duration: 0.5,
-        ease: [0.6, 0.05, 0.01, 0.9],
-      },
+      transition: { duration: 0.6, ease: [0.6, 0.05, 0.01, 0.9] },
     },
   };
 
   return (
-    <motion.section
-      id={id}
-      ref={ref}
-      style={{ backgroundColor: bgColor }}
+    <motion.div
+      variants={containerVariants}
       initial='hidden'
       animate={inView ? 'visible' : 'hidden'}
-      variants={containerVariants}
-      className='relative min-h-screen py-24 text-white'
+      className='relative h-full'
+      ref={ref}
     >
-      <div className='mx-auto max-w-7xl px-4 sm:px-6 lg:px-8'>
-        {/* Product Header */}
-        <motion.div variants={itemVariants} className='mb-16 max-w-3xl'>
-          <h2 className='mb-6 font-light text-5xl tracking-tight lg:text-6xl'>
-            {productName}
-          </h2>
-          <p className='text-xl text-blue-200/80 lg:text-2xl'>
-            {productDescription}
-          </p>
-        </motion.div>
+      <div className='group relative h-full overflow-hidden rounded-2xl border border-white/5 bg-gradient-to-b from-[#0A192F] via-[#112240] to-[#0A192F] transition-all duration-500 hover:border-white/10'>
+        {/* Background Elements */}
+        <div className='absolute inset-0 bg-[url("/assets/patterns/grid.svg")] opacity-[0.03]' />
+        <div className='bg-gradient-radial absolute inset-0 from-[#A90A0C]/5 via-transparent to-transparent opacity-0 transition-opacity duration-500 group-hover:opacity-100' />
 
-        <div className='grid gap-16 lg:grid-cols-2'>
-          {/* Image Section */}
+        {/* Content Container */}
+        <div className='relative z-10 flex h-full flex-col p-8'>
+          {/* Product Badge */}
+          <motion.div variants={itemVariants} className='mb-4'>
+            <div className='inline-flex items-center gap-2 rounded-full border border-[#A90A0C]/10 bg-gradient-to-r from-[#A90A0C]/5 to-transparent px-4 py-1.5'>
+              <div className='h-1.5 w-1.5 rounded-full bg-[#A90A0C]/40' />
+              <span className='text-xs font-medium uppercase tracking-wider text-white/70'>
+                {productName === 'Genetic Screening'
+                  ? 'Hardware + Software'
+                  : 'Cloud Platform'}
+              </span>
+            </div>
+          </motion.div>
+
+          {/* Image Container */}
           <motion.div
             variants={itemVariants}
-            className='relative aspect-[3/3] overflow-hidden rounded-2xl bg-gradient-to-br from-blue-500/10 to-transparent lg:sticky lg:top-24 lg:h-[600px]'
+            className='relative mb-6 aspect-[16/9] overflow-hidden rounded-xl'
           >
+            <div className='absolute -right-20 -top-20 h-40 w-40 rounded-full bg-[#A90A0C]/20 blur-[100px]' />
             <Image
               src={imageSrc}
               alt={`${productName} Visualization`}
               fill
-              className='object-cover'
-              quality={90}
-              priority
+              className='object-cover transition-transform duration-700 group-hover:scale-105'
+              quality={95}
             />
-            <div className='absolute inset-0 bg-gradient-to-t from-gray-950/50 via-transparent to-transparent' />
+            <div className='absolute inset-0 bg-gradient-to-t from-[#0A192F]/80 via-[#0A192F]/20 to-transparent' />
           </motion.div>
 
-          {/* Features Section */}
-          <motion.div variants={itemVariants} className='space-y-16'>
-            {features.map((feature, index) => (
-              <motion.div
-                key={index}
-                variants={itemVariants}
-                className='relative rounded-xl border border-blue-500/10 bg-gradient-to-br from-blue-500/5 via-blue-400/5 to-transparent p-8 backdrop-blur-sm'
-              >
-                <div className='mb-4 flex items-center gap-3'>
-                  <div className='h-1.5 w-1.5 rounded-full bg-blue-400'></div>
-                  <h3 className='text-sm font-semibold tracking-wider text-blue-300'>
-                    {feature.title}
-                  </h3>
-                </div>
-                <p className='mb-6 text-lg text-gray-300/90'>
-                  {feature.description}
-                </p>
-                {feature.bulletPoints && (
-                  <ul className='space-y-3'>
-                    {feature.bulletPoints.map((point, i) => (
-                      <li
-                        key={i}
-                        className='flex items-start gap-3 text-gray-300/70'
-                      >
-                        <span className='mt-1.5 h-1 w-1 rounded-full bg-blue-500/50'></span>
-                        <span>{point}</span>
-                      </li>
-                    ))}
-                  </ul>
-                )}
-              </motion.div>
-            ))}
+          {/* Text Content */}
+          <motion.div variants={itemVariants} className='mt-auto'>
+            <h2 className='font-light text-2xl tracking-wide text-white'>
+              {productName}
+            </h2>
+            <p className='mt-4 text-base leading-relaxed text-white/70'>
+              {productDescription}
+            </p>
           </motion.div>
         </div>
       </div>
-    </motion.section>
+    </motion.div>
   );
 }

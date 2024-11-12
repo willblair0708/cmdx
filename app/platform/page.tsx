@@ -114,28 +114,43 @@ export default function ProductsPage() {
               bgColor='#1019EC'
               onScrollToNext={() => {
                 document
-                  .getElementById('genetic-screening-section')
+                  .getElementById('products-section')
                   ?.scrollIntoView({ behavior: 'smooth' });
               }}
             />
 
-            <ProductSectionWrapper
-              onInView={() => setCurrentProduct('Genetic Screening')}
-            >
-              <GeneticScreeningSection
-                id='genetic-screening-section'
-                bgColor='#18181B'
-              />
-            </ProductSectionWrapper>
+            {/* Products Section */}
+            <section id='products-section' className='py-24 sm:py-32'>
+              <div className='mx-auto max-w-7xl px-4 sm:px-6 lg:px-8'>
+                <motion.h2
+                  initial={{ opacity: 0, y: 20 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  transition={{ duration: 0.6 }}
+                  className='mb-16 font-light text-3xl tracking-tight text-white sm:text-4xl'
+                >
+                  Our Platform
+                </motion.h2>
+                <div className='grid gap-8 lg:grid-cols-2'>
+                  <ProductSectionWrapper
+                    onInView={() => setCurrentProduct('Genetic Screening')}
+                  >
+                    <GeneticScreeningSection
+                      id='genetic-screening-section'
+                      bgColor='#18181B'
+                    />
+                  </ProductSectionWrapper>
 
-            <ProductSectionWrapper
-              onInView={() => setCurrentProduct('AI Diagnostics')}
-            >
-              <DiagnosticAISection
-                id='diagnostic-ai-section'
-                bgColor='#18181B'
-              />
-            </ProductSectionWrapper>
+                  <ProductSectionWrapper
+                    onInView={() => setCurrentProduct('AI Diagnostics')}
+                  >
+                    <DiagnosticAISection
+                      id='diagnostic-ai-section'
+                      bgColor='#18181B'
+                    />
+                  </ProductSectionWrapper>
+                </div>
+              </div>
+            </section>
           </motion.main>
         </motion.div>
       </AnimatePresence>

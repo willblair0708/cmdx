@@ -147,7 +147,7 @@ const FooterSection = ({
                 />
               </motion.svg>
               <motion.div
-                className='absolute -bottom-px left-0 h-[1px] w-0 bg-gradient-to-r from-white/60 via-white/30 to-transparent transition-all duration-300 group-hover:w-full'
+                className='absolute -bottom-px left-0 h-[1px] w-0 bg-gradient-to-r from-[#A90A0C]/60 via-[#A90A0C]/30 to-transparent transition-all duration-300 group-hover:w-full'
                 layoutId={`underline-${link.name}`}
               />
             </motion.span>
@@ -166,9 +166,9 @@ const SocialIcon = memo(({ icon }: { icon: (typeof SOCIAL_ICONS)[number] }) => (
     variants={itemVariants}
     whileHover={{ scale: 1.05 }}
     whileTap={{ scale: 0.95 }}
-    className='group relative flex h-11 w-11 items-center justify-center overflow-hidden rounded-full border border-white/10 bg-gradient-to-b from-white/[0.08] to-transparent backdrop-blur-sm transition-all duration-300 hover:border-white/20'
+    className='group relative flex h-11 w-11 items-center justify-center overflow-hidden rounded-full border border-[#A90A0C]/10 bg-gradient-to-b from-white/[0.08] to-transparent backdrop-blur-sm transition-all duration-300 hover:border-[#A90A0C]/20'
   >
-    <motion.div className='absolute inset-0 bg-gradient-to-tr from-white/10 via-transparent to-transparent opacity-0 transition-opacity duration-300 group-hover:opacity-100' />
+    <motion.div className='absolute inset-0 bg-gradient-to-tr from-[#A90A0C]/10 via-transparent to-transparent opacity-0 transition-opacity duration-300 group-hover:opacity-100' />
     <motion.div className='relative text-white/60 transition-colors duration-300 group-hover:text-white'>
       <icon.Icon color='currentColor' />
     </motion.div>
@@ -177,10 +177,10 @@ const SocialIcon = memo(({ icon }: { icon: (typeof SOCIAL_ICONS)[number] }) => (
 
 const Footer: React.FC = () => {
   return (
-    <motion.footer className='relative overflow-hidden bg-gradient-to-b from-gray-950 to-blue-950/90 text-white'>
+    <motion.footer className='relative overflow-hidden bg-gradient-to-b from-[#0A192F] via-[#112240] to-[#0A192F] text-white'>
       {/* Subtle background elements */}
-      <div className='absolute inset-0 bg-[radial-gradient(ellipse_at_top,rgba(59,130,246,0.05),transparent_50%)]' />
-      <div className='absolute inset-0 bg-[radial-gradient(circle_at_bottom_right,rgba(59,130,246,0.08),transparent_50%)]' />
+      <div className='absolute inset-0 bg-[radial-gradient(ellipse_at_top,rgba(169,10,12,0.05),transparent_50%)]' />
+      <div className='absolute inset-0 bg-[radial-gradient(circle_at_bottom_right,rgba(169,10,12,0.08),transparent_50%)]' />
       <div className='absolute inset-0 bg-[url("/assets/noise.png")] opacity-[0.02] mix-blend-overlay' />
 
       <div className='max-w-9xl mx-auto flex h-full flex-col justify-between px-6 py-12 sm:px-8 lg:px-12'>
@@ -198,7 +198,7 @@ const Footer: React.FC = () => {
                 CM
                 <span className='font-light tracking-tighter'>Diagnostics</span>
               </span>
-              <motion.div className='mt-1 h-[1px] w-0 bg-gradient-to-r from-blue-400/60 via-blue-300/30 to-transparent transition-all duration-300 group-hover:w-full' />
+              <motion.div className='mt-1 h-[1px] w-0 bg-gradient-to-r from-[#A90A0C]/60 via-[#A90A0C]/30 to-transparent transition-all duration-300 group-hover:w-full' />
             </Link>
             <p className='mt-8 max-w-sm text-sm leading-relaxed tracking-wide text-white/40'>
               Pioneering accessible genetic screening and AI-powered imaging
@@ -215,7 +215,7 @@ const Footer: React.FC = () => {
         {/* Bottom Section */}
         <motion.div
           variants={containerVariants}
-          className='mt-12 flex flex-col items-center justify-between border-t border-white/[0.08] pt-8 sm:flex-row'
+          className='mt-12 flex flex-col items-center justify-between border-t border-[#A90A0C]/[0.08] pt-8 sm:flex-row'
         >
           <motion.p
             variants={itemVariants}
@@ -230,13 +230,13 @@ const Footer: React.FC = () => {
           >
             <Link
               href='/privacy'
-              className='text-xs text-white/40 hover:text-blue-300'
+              className='text-xs text-white/40 hover:text-[#A90A0C]'
             >
               Privacy Policy
             </Link>
             <Link
               href='/terms'
-              className='text-xs text-white/40 hover:text-blue-300'
+              className='text-xs text-white/40 hover:text-[#A90A0C]'
             >
               Terms of Service
             </Link>
