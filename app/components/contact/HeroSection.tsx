@@ -176,13 +176,14 @@ const FormInput = ({
 } & UseFormRegisterReturn) => {
   const [isFocused, setIsFocused] = useState(false);
 
-  const value = form.watch(field.id, '');
+  const value = form.watch(field.id) ?? '';
   const hasValue = value.length > 0;
 
   return (
     <div
-      key={field.id}
-      className='relative flex w-full flex-col items-start justify-end gap-8'
+      className={`relative mb-6 ${
+        field.width === 'half' ? 'w-full sm:w-[calc(50%-12px)]' : 'w-full'
+      }`}
     >
       <div className='relative flex w-full flex-col items-start justify-center gap-2.5 self-stretch'>
         <motion.div
@@ -236,12 +237,12 @@ const FormInput = ({
 };
 
 const formSchema = z.object({
-  firstName: z.string().min(1),
-  lastName: z.string().min(1),
-  email: z.string().email(),
-  organization: z.string().min(2),
-  researchArea: z.string().min(2),
-  message: z.string().min(50),
+  firstName: z.string().optional(),
+  lastName: z.string().optional(),
+  email: z.string().email().optional(),
+  organization: z.string().optional(),
+  researchArea: z.string().optional(),
+  message: z.string().optional(),
 });
 
 export default function HeroSection({
@@ -338,7 +339,9 @@ export default function HeroSection({
     }
   };
 
-  const message = form.watch('message', '');
+  const message = form.watch('message') ?? '';
+  const messageLength = message.length;
+
   return (
     <motion.section
       ref={sectionRef}
@@ -492,16 +495,17 @@ export default function HeroSection({
                   <motion.div
                     className='pointer-events-none absolute inset-0 rounded-[7px]'
                     animate={{
-                      boxShadow: message
-                        ? '0 0 0 1px rgba(255,255,255,0.2), 0 4px 12px rgba(0,0,0,0.1)'
-                        : '0 0 0 1px rgba(255,255,255,0)',
+                      boxShadow:
+                        messageLength > 0
+                          ? '0 0 0 1px rgba(255,255,255,0.2), 0 4px 12px rgba(0,0,0,0.1)'
+                          : '0 0 0 1px rgba(255,255,255,0)',
                     }}
                     transition={{ duration: 0.2 }}
                   />
                 </motion.div>
                 <motion.label
                   initial='initial'
-                  animate={message?.length > 0 ? 'visible' : 'initial'}
+                  animate={messageLength > 0 ? 'visible' : 'initial'}
                   variants={labelVariants}
                   className='pointer-events-none absolute -top-6 left-0 origin-left text-xs font-normal leading-[14.4px] tracking-[0.96px] text-white'
                 >
