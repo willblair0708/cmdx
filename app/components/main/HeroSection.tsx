@@ -62,10 +62,10 @@ export default function HeroSection({ id, isMobile }: HeroSectionProps) {
 
   // Update particle colors for modern tech feel
   const PARTICLE_COLORS = [
-    'rgba(169, 10, 12, 0.3)',  // #A90A0C with opacity
-    'rgba(30, 58, 138, 0.3)',  // dark blue
-    'rgba(169, 10, 12, 0.4)',  // #A90A0C slightly stronger
-    'rgba(30, 58, 138, 0.4)',  // dark blue stronger
+    'rgba(169, 10, 12, 0.3)', // #A90A0C with opacity
+    'rgba(30, 58, 138, 0.3)', // dark blue
+    'rgba(169, 10, 12, 0.4)', // #A90A0C slightly stronger
+    'rgba(30, 58, 138, 0.4)', // dark blue stronger
   ];
 
   // Interactive particle system
@@ -246,13 +246,9 @@ export default function HeroSection({ id, isMobile }: HeroSectionProps) {
               animate={isInView ? 'visible' : 'hidden'}
               className='mb-6 text-4xl font-book leading-tight tracking-tight sm:text-5xl lg:text-6xl'
             >
-              <span className='text-white'>
-                Deep-Tech Diagnostics for
-              </span>
+              <span className='text-white'>Deep-Tech Diagnostics for</span>
               <br />
-              <span className='text-[#808080]'>
-                Neurological Disorders
-              </span>
+              <span className='text-[#808080]'>Neurological Disorders</span>
             </motion.h1>
 
             {/* Description */}
@@ -263,7 +259,9 @@ export default function HeroSection({ id, isMobile }: HeroSectionProps) {
               className='relative mb-12 max-w-2xl'
             >
               <p className='text-lg leading-relaxed text-neutral-200/90 sm:text-xl'>
-                Pioneering accessible genetic screening and AI-powered imaging analysis for cerebral cavernous malformations, bringing advanced diagnostics to underserved communities worldwide.
+                Pioneering accessible genetic screening and AI-powered imaging
+                analysis for cerebral cavernous malformations, bringing advanced
+                diagnostics to underserved communities worldwide.
               </p>
             </motion.div>
 
@@ -281,7 +279,13 @@ export default function HeroSection({ id, isMobile }: HeroSectionProps) {
                 <span className='relative flex items-center gap-2'>
                   Our Platform
                   <svg className='h-4 w-4' viewBox='0 0 16 16' fill='none'>
-                    <path d='M1 8h14M9 2l6 6-6 6' stroke='currentColor' strokeWidth='2' strokeLinecap='round' strokeLinejoin='round'/>
+                    <path
+                      d='M1 8h14M9 2l6 6-6 6'
+                      stroke='currentColor'
+                      strokeWidth='2'
+                      strokeLinecap='round'
+                      strokeLinejoin='round'
+                    />
                   </svg>
                 </span>
               </Link>
