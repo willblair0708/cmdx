@@ -197,10 +197,10 @@ export default function HeroSection({ id, isMobile }: HeroSectionProps) {
                 </span>
               </Link>
               <Link
-                href='/research'
+                href='/non-profit'
                 className='group relative overflow-hidden rounded-md border border-[#A90A0C]/10 bg-white/[0.02] px-6 py-4 text-sm font-semibold text-white backdrop-blur-sm transition-all duration-300 hover:bg-white/[0.04]'
               >
-                Clinical Research
+                Our Non-Profit
               </Link>
             </motion.div>
           </div>
