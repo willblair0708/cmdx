@@ -29,44 +29,118 @@ export default function HeroSection({
     <motion.section
       ref={sectionRef}
       id={id}
-      className='relative h-screen overflow-hidden text-white'
-      style={{ backgroundColor: bgColor }}
+      className='relative h-screen overflow-hidden'
       initial={{ opacity: 0 }}
       animate={{ opacity: 1 }}
       transition={{ duration: 0.5 }}
     >
-      <motion.div
-        className='absolute inset-0'
-        initial={{ opacity: 0 }}
-        animate={{ opacity: 1 }}
-        transition={{ duration: 1 }}
-      >
+      {/* Background Image & Overlays */}
+      <motion.div className='absolute inset-0'>
         <Image
           src='/assets/about/about_header.webp'
-          alt='About GuestOS'
+          alt='Medical Education Initiative'
           fill
-          quality={75}
+          quality={95}
           priority
-          placeholder='blur'
-          blurDataURL='data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIxMDAlIiBoZWlnaHQ9IjEwMCUiPjxyZWN0IHdpZHRoPSIxMDAlIiBoZWlnaHQ9IjEwMCUiIGZpbGw9IiMzMzMzMzMiLz48L3N2Zz4='
+          className='object-cover'
           sizes={`(max-width: 768px) ${HERO_IMAGE_DIMENSIONS.mobileWidth}px, ${HERO_IMAGE_DIMENSIONS.width}px`}
-          style={{
-            objectFit: 'cover',
-          }}
-          loading='eager'
         />
+        {/* Enhanced Gradient Overlays */}
+        <div className='absolute inset-0 bg-gradient-to-b from-[#0A192F]/90 via-[#0A192F]/80 to-[#0A192F]/95' />
+        <div className='absolute inset-0 bg-[url("/assets/patterns/grid.svg")] opacity-[0.03]' />
+        <div className='bg-gradient-radial absolute inset-0 from-[#A90A0C]/5 via-transparent to-transparent' />
       </motion.div>
-      <div className='absolute inset-0 bg-black bg-opacity-30' />
+
       <Navbar isFixed={false} />
-      <div className='absolute inset-0 flex items-start px-4 pt-[300px] text-white sm:items-center sm:px-4 sm:pt-0 md:px-8'>
-        <motion.h1
-          variants={itemVariants}
-          initial='initial'
-          animate='animate'
-          className='max-w-4xl text-left text-hero font-book'
-        >
-          A Long-Standing Family Affair.
-        </motion.h1>
+
+      <div className='relative z-10 mx-auto flex h-full max-w-7xl flex-col justify-center px-4 sm:px-6 lg:px-8'>
+        <div className='max-w-4xl'>
+          {/* Mission Badge */}
+          <motion.div
+            variants={itemVariants}
+            initial='initial'
+            animate='animate'
+            className='mb-8 inline-flex items-center gap-3 rounded-full border border-[#A90A0C]/10 bg-gradient-to-r from-[#A90A0C]/5 to-transparent px-5 py-2'
+          >
+            <div className='h-1.5 w-1.5 rounded-full bg-[#A90A0C]' />
+            <span className='text-sm font-medium text-white/80'>
+              Education • Research • Global Impact
+            </span>
+          </motion.div>
+
+          {/* Main Heading */}
+          <motion.h1
+            variants={itemVariants}
+            initial='initial'
+            animate='animate'
+            className='mb-8 font-light text-5xl tracking-tight text-white lg:text-7xl'
+          >
+            Empowering the Next Generation of CCM Care
+          </motion.h1>
+
+          {/* Description */}
+          <motion.p
+            variants={itemVariants}
+            initial='initial'
+            animate='animate'
+            className='mb-12 max-w-2xl text-lg leading-relaxed text-white/70'
+          >
+            Bridging the gap in CCM education and research through innovative
+            programs, global collaboration, and accessible medical training.
+          </motion.p>
+
+          {/* Initiative Cards */}
+          <motion.div
+            variants={containerVariants}
+            initial='initial'
+            animate='animate'
+            className='grid gap-6 md:grid-cols-3'
+          >
+            {/* Medical Education Card */}
+            <motion.div
+              variants={itemVariants}
+              className='group relative overflow-hidden rounded-xl border border-white/5 bg-white/[0.02] p-6 backdrop-blur-sm'
+            >
+              <div className='absolute inset-0 bg-gradient-to-br from-[#A90A0C]/5 via-transparent to-transparent opacity-0 transition-opacity duration-300 group-hover:opacity-100' />
+              <h3 className='mb-3 text-lg font-semibold text-white'>
+                Rural Medical Training
+              </h3>
+              <p className='text-sm leading-relaxed text-white/60'>
+                Supporting medical students in Mexico who will provide care in
+                rural communities
+              </p>
+            </motion.div>
+
+            {/* Podcast Education Card */}
+            <motion.div
+              variants={itemVariants}
+              className='group relative overflow-hidden rounded-xl border border-white/5 bg-white/[0.02] p-6 backdrop-blur-sm'
+            >
+              <div className='absolute inset-0 bg-gradient-to-br from-[#A90A0C]/5 via-transparent to-transparent opacity-0 transition-opacity duration-300 group-hover:opacity-100' />
+              <h3 className='mb-3 text-lg font-semibold text-white'>
+                Medical Education Podcast
+              </h3>
+              <p className='text-sm leading-relaxed text-white/60'>
+                Featuring insights from patients and CCM experts worldwide
+              </p>
+            </motion.div>
+
+            {/* Research Network Card */}
+            <motion.div
+              variants={itemVariants}
+              className='group relative overflow-hidden rounded-xl border border-white/5 bg-white/[0.02] p-6 backdrop-blur-sm'
+            >
+              <div className='absolute inset-0 bg-gradient-to-br from-[#A90A0C]/5 via-transparent to-transparent opacity-0 transition-opacity duration-300 group-hover:opacity-100' />
+              <h3 className='mb-3 text-lg font-semibold text-white'>
+                Global Research Network
+              </h3>
+              <p className='text-sm leading-relaxed text-white/60'>
+                Connecting research teams and sharing data to advance scientific
+                understanding of CCM pathogenesis
+              </p>
+            </motion.div>
+          </motion.div>
+        </div>
       </div>
     </motion.section>
   );
@@ -80,6 +154,15 @@ const itemVariants = {
     transition: {
       duration: 0.5,
       ease: [0.25, 0.1, 0.25, 1],
+    },
+  },
+};
+
+const containerVariants = {
+  initial: {},
+  animate: {
+    transition: {
+      staggerChildren: 0.1,
     },
   },
 };
