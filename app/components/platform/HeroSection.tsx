@@ -3,6 +3,7 @@ import { useEffect, useRef, useState } from 'react';
 import { useInView } from 'react-intersection-observer';
 
 import { motion } from 'framer-motion';
+import { Dna } from 'lucide-react';
 
 import useIsMobile from '@/hooks/use-is-mobile';
 
@@ -13,6 +14,38 @@ interface HeroSectionProps {
   bgColor: string;
   onScrollToNext: () => void;
 }
+
+const GeneticIcon = () => (
+  <svg
+    className='h-6 w-6 text-[#A90A0C]'
+    fill='none'
+    viewBox='0 0 24 24'
+    stroke='currentColor'
+  >
+    <path
+      strokeLinecap='round'
+      strokeLinejoin='round'
+      strokeWidth={1.5}
+      d='M9 12l2 2 4-4M7.835 4.697a3.42 3.42 0 001.946-.806 3.42 3.42 0 014.438 0 3.42 3.42 0 001.946.806 3.42 3.42 0 013.138 3.138 3.42 3.42 0 00.806 1.946 3.42 3.42 0 010 4.438 3.42 3.42 0 00-.806 1.946 3.42 3.42 0 01-3.138 3.138 3.42 3.42 0 00-1.946.806 3.42 3.42 0 01-4.438 0 3.42 3.42 0 00-1.946-.806 3.42 3.42 0 01-3.138-3.138 3.42 3.42 0 00-.806-1.946 3.42 3.42 0 010-4.438 3.42 3.42 0 00.806-1.946 3.42 3.42 0 013.138-3.138z'
+    />
+  </svg>
+);
+
+const AIIcon = () => (
+  <svg
+    className='h-6 w-6 text-[#A90A0C]'
+    fill='none'
+    viewBox='0 0 24 24'
+    stroke='currentColor'
+  >
+    <path
+      strokeLinecap='round'
+      strokeLinejoin='round'
+      strokeWidth={1.5}
+      d='M9.75 17L9 20l-1 1h8l-1-1-.75-3M3 13h18M5 17h14a2 2 0 002-2V5a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z'
+    />
+  </svg>
+);
 
 const Background = () => (
   <motion.div className='absolute inset-0 z-0'>
@@ -139,9 +172,7 @@ export default function HeroSection({
                 <div className='relative space-y-6'>
                   <div className='flex items-center gap-4'>
                     <div className='rounded-lg bg-[#A90A0C]/10 p-3'>
-                      <svg
-                        className='h-6 w-6 text-[#A90A0C]' /* Add icon SVG */
-                      />
+                      <Dna className='h-6 w-6 text-[#A90A0C]' />
                     </div>
                     <h3 className='text-xl font-semibold text-white'>
                       Genetic Screening
@@ -156,11 +187,11 @@ export default function HeroSection({
                   <ul className='space-y-3 text-sm text-white/60'>
                     <li className='flex items-center gap-2'>
                       <div className='h-1 w-1 rounded-full bg-[#A90A0C]' />
-                      Rapid Results in 60 minutes
+                      Rapid Results
                     </li>
                     <li className='flex items-center gap-2'>
                       <div className='h-1 w-1 rounded-full bg-[#A90A0C]' />
-                      Battery-powered operation
+                      Low cost
                     </li>
                     <li className='flex items-center gap-2'>
                       <div className='h-1 w-1 rounded-full bg-[#A90A0C]' />
@@ -194,9 +225,7 @@ export default function HeroSection({
                 <div className='relative space-y-6'>
                   <div className='flex items-center gap-4'>
                     <div className='rounded-lg bg-[#A90A0C]/10 p-3'>
-                      <svg
-                        className='h-6 w-6 text-[#A90A0C]' /* Add icon SVG */
-                      />
+                      <AIIcon />
                     </div>
                     <h3 className='text-xl font-semibold text-white'>
                       AI Diagnostics
