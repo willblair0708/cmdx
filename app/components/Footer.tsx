@@ -13,19 +13,18 @@ const FOOTER_LINKS = [
   {
     title: 'PLATFORM',
     links: [
-      { name: 'Genetic Screening', href: '/platform/genetic-screening' },
-      { name: 'AI Diagnostics', href: '/platform/ai-diagnostics' },
-      { name: 'Global Access', href: '/platform/global-access' },
+      { name: 'Genetic Screening', href: '/platform#genetic-screening' },
+      { name: 'AI Diagnostics', href: '/platform#ai-diagnostics' },
     ],
   },
-  {
-    title: 'RESOURCES',
-    links: [
-      { name: 'Research', href: '/research' },
-      { name: 'Publications', href: '/publications' },
-      { name: 'Case Studies', href: '/case-studies' },
-    ],
-  },
+  // {
+  //   title: 'RESOURCES',
+  //   links: [
+  //     { name: 'Research', href: '/research' },
+  //     { name: 'Publications', href: '/publications' },
+  //     { name: 'Case Studies', href: '/case-studies' },
+  //   ],
+  // },
   {
     title: 'COMPANY',
     links: [
@@ -194,11 +193,13 @@ const Footer: React.FC = () => {
             className='col-span-full lg:col-span-1'
           >
             <Link href='/' className='group inline-block'>
-              <span className='text-2xl font-book tracking-tight text-white/90 transition-all duration-300 group-hover:text-white'>
-                CM
-                <span className='font-light tracking-tighter'>Diagnostics</span>
-              </span>
-              <motion.div className='mt-1 h-[1px] w-0 bg-gradient-to-r from-[#A90A0C]/60 via-[#A90A0C]/30 to-transparent transition-all duration-300 group-hover:w-full' />
+              <Image
+                src='/assets/axonara.svg'
+                alt='Axonara Bio Logo'
+                width={120}
+                height={32}
+                className='h-12 w-auto drop-shadow-lg'
+              />
             </Link>
             <p className='mt-8 max-w-sm text-sm leading-relaxed tracking-wide text-white/40'>
               Pioneering accessible genetic screening and AI-powered imaging
@@ -221,8 +222,7 @@ const Footer: React.FC = () => {
             variants={itemVariants}
             className='text-xs tracking-wider text-white/30'
           >
-            &copy; {new Date().getFullYear()} CM Diagnostics. All rights
-            reserved.
+            &copy; {new Date().getFullYear()} Axonara Bio. All rights reserved.
           </motion.p>
           <motion.div
             variants={itemVariants}

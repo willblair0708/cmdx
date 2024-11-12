@@ -90,7 +90,7 @@ const NavLogo = memo(() => (
           alt='Axonara Bio Logo'
           width={120}
           height={32}
-          className='h-8 w-auto drop-shadow-lg'
+          className='h-12 w-auto drop-shadow-lg'
         />
       </motion.div>
     </Link>
