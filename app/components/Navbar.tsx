@@ -3,6 +3,7 @@
 import Link from 'next/link';
 import { usePathname } from 'next/navigation';
 import { memo, useCallback, useState } from 'react';
+import Image from 'next/image';
 
 import {
   AnimatePresence,
@@ -39,7 +40,7 @@ export default function Navbar({ isFixed = true }: NavbarProps) {
   const navBackground = useTransform(
     scrollY,
     [0, 100],
-    ['rgba(0,0,0,0)', 'rgba(0,0,0,0.85)']
+    ['rgba(10, 25, 47, 0)', 'rgba(10, 25, 47, 0.85)']
   );
 
   const toggleMenu = useCallback(() => setIsMenuOpen((prev) => !prev), []);
@@ -51,7 +52,7 @@ export default function Navbar({ isFixed = true }: NavbarProps) {
       animate='visible'
       className={`${
         isFixed ? 'fixed' : 'absolute'
-      } left-0 right-0 z-50 flex w-full items-center justify-between px-6 py-4 sm:px-12 sm:py-5`}
+      } left-0 right-0 z-50 flex w-full items-center justify-between px-6 backdrop-blur-sm py-4 sm:px-12 sm:py-5`}
     >
       <NavLogo />
       <DesktopMenu pathname={pathname} />
@@ -77,9 +78,13 @@ const NavLogo = memo(() => (
         whileTap={{ scale: 0.97 }}
         className='transition-all duration-300'
       >
-        <span className='text-xl font-book tracking-tight text-white/90 transition-all duration-300 group-hover:text-white'>
-          CM<span className='font-light tracking-tighter'>Diagnostics</span>
-        </span>
+        <Image
+          src="/assets/axonara.svg"
+          alt="Axonara Bio Logo"
+          width={120}
+          height={32}
+          className="h-8 w-auto"
+        />
       </motion.div>
     </Link>
   </motion.div>
@@ -90,7 +95,7 @@ NavLogo.displayName = 'NavLogo';
 const DesktopMenu = memo(({ pathname }: { pathname: string }) => (
   <motion.div
     variants={{ visible: { transition: { staggerChildren: 0.08 } } }}
-    className='hidden items-center gap-10 sm:flex sm:gap-14'
+    className='hidden items-center gap-8 sm:flex'
   >
     {navItems.map((item) => (
       <NavItem key={item.text} item={item} pathname={pathname} />
@@ -115,13 +120,15 @@ const NavItem = memo(
       <motion.div variants={navItemVariants} className='group relative'>
         <Link
           href={item.href}
-          className='text-base font-medium tracking-wide text-white/90 transition-all hover:text-white'
+          className='text-sm font-medium tracking-wide text-white/80 transition-all hover:text-white'
           scroll={false}
         >
           <span className='flex items-center'>{item.text}</span>
         </Link>
         <motion.div
-          className={`absolute -bottom-1 left-0 right-0 h-[2px] origin-left bg-blue-400 ${isActive ? 'scale-x-100' : 'scale-x-0'}`}
+          className={`absolute -bottom-1 left-0 right-0 h-[2px] origin-left bg-[#A90A0C] ${
+            isActive ? 'scale-x-100' : 'scale-x-0'
+          }`}
           initial={false}
           animate={{ scaleX: isActive ? 1 : 0 }}
           whileHover={{ scaleX: 1 }}
@@ -140,14 +147,14 @@ const ContactButton = memo(() => (
       <motion.button
         whileHover={{ scale: 1.03 }}
         whileTap={{ scale: 0.97 }}
-        className='group relative flex items-center gap-2 overflow-hidden rounded-full bg-blue-500/10 px-6 py-2.5 text-sm font-medium tracking-wide text-white transition-all duration-300 hover:bg-blue-500/20'
+        className='group relative flex items-center gap-2 overflow-hidden rounded-full border border-[#A90A0C]/20 bg-[#A90A0C]/10 px-6 py-2.5 text-sm font-medium tracking-wide text-white transition-all duration-300 hover:bg-[#A90A0C]/20'
       >
         <span className='relative z-10 transition-transform duration-300 group-hover:translate-x-[-4px]'>
           CONTACT
         </span>
         <motion.svg
           xmlns='http://www.w3.org/2000/svg'
-          className='relative z-10 h-4 w-4 text-blue-400 transition-all duration-300 group-hover:translate-x-1'
+          className='relative z-10 h-4 w-4 text-[#A90A0C] transition-all duration-300 group-hover:translate-x-1'
           fill='none'
           viewBox='0 0 24 24'
           stroke='currentColor'
@@ -159,7 +166,7 @@ const ContactButton = memo(() => (
             d='M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z'
           />
         </motion.svg>
-        <div className='absolute inset-0 -z-10 bg-gradient-to-r from-blue-500/0 via-blue-500/5 to-blue-500/0 opacity-0 transition-opacity duration-300 group-hover:opacity-100' />
+        <div className='absolute inset-0 -z-10 bg-gradient-to-r from-[#A90A0C]/0 via-[#A90A0C]/10 to-[#A90A0C]/0 opacity-0 transition-opacity duration-300 group-hover:opacity-100' />
       </motion.button>
     </Link>
   </motion.div>
@@ -182,7 +189,7 @@ const MobileMenuButton = memo(({ toggleMenu }: { toggleMenu: () => void }) => (
       viewBox='0 0 28 8'
       fill='none'
       xmlns='http://www.w3.org/2000/svg'
-      className='text-emerald-300'
+      className='text-[#A90A0C]'
     >
       <path d='M0.5 1H28' stroke='currentColor' strokeWidth='1.5' />
       <path d='M0.5 7H28' stroke='currentColor' strokeWidth='1.5' />
