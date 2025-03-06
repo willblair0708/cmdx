@@ -27,7 +27,7 @@ const FOOTER_LINKS = [
   {
     title: 'COMPANY',
     links: [
-      { name: 'About', href: '#about' },
+      { name: 'About', href: '#mission' },
       { name: 'Contact', href: '#contact' },
     ],
   },

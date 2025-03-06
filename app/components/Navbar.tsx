@@ -1,7 +1,8 @@
-'use client';
+"use client";
 
 import Image from 'next/image';
 import Link from 'next/link';
+import useHash from '@/hooks/use-hash';
 import { usePathname } from 'next/navigation';
 import { memo, useCallback, useState } from 'react';
 import {
@@ -36,6 +37,11 @@ export default function Navbar({ isFixed = true }: NavbarProps) {
   const pathname = usePathname();
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const { scrollY } = useScroll();
+
+  // Define section IDs here.
+  const sectionIds = ['home', 'platform', 'mission', 'contact'];
+  // Call the hook inside the component.
+  const activeSection = useHash(sectionIds);
 
   // Animate the gradient overlay.
   const navBackground = useTransform(
@@ -90,14 +96,11 @@ export default function Navbar({ isFixed = true }: NavbarProps) {
       } left-1/2 -translate-x-1/2 z-50 flex items-center justify-between border-b border-white/5 px-6 sm:px-12`}
     >
       <NavLogo style={{ opacity: logoOpacity }} />
-      <DesktopMenu pathname={pathname} />
+      <DesktopMenu pathname={pathname} activeSection={activeSection} />
       <MobileMenuButton toggleMenu={toggleMenu} />
       <AnimatePresence mode="wait">
         {isMenuOpen && (
-          <MobileMenu
-            toggleMenu={toggleMenu}
-            navItems={navItems}
-          />
+          <MobileMenu toggleMenu={toggleMenu} navItems={navItems} />
         )}
       </AnimatePresence>
     </motion.nav>
@@ -127,13 +130,18 @@ const NavLogo = memo(({ style }: { style?: any }) => (
 
 NavLogo.displayName = 'NavLogo';
 
-const DesktopMenu = memo(({ pathname }: { pathname: string }) => (
+interface DesktopMenuProps {
+  pathname: string;
+  activeSection: string;
+}
+
+const DesktopMenu = memo(({ pathname, activeSection }: DesktopMenuProps) => (
   <motion.div
     variants={{ visible: { transition: { staggerChildren: 0.05 } } }}
     className="hidden items-center gap-10 sm:flex"
   >
     {navItems.map((item) => (
-      <NavItem key={item.text} item={item} pathname={pathname} />
+      <NavItem key={item.text} item={item} activeSection={activeSection} />
     ))}
     <ContactButton />
   </motion.div>
@@ -141,33 +149,39 @@ const DesktopMenu = memo(({ pathname }: { pathname: string }) => (
 
 DesktopMenu.displayName = 'DesktopMenu';
 
-const NavItem = memo(
-  ({ item, pathname }: { item: (typeof navItems)[number]; pathname: string }) => {
-    const isActive = pathname === item.href;
-    return (
-      <motion.div variants={navItemVariants} className="group relative">
-        <Link
-          href={item.href}
-          className="relative text-sm font-medium tracking-wide text-white/70 transition-all duration-300 hover:text-white"
-        >
-          <span className="flex items-center">{item.text}</span>
-          <motion.div
-            className="absolute -bottom-1 left-0 right-0 h-[2px] origin-left bg-gradient-to-r from-[#A90A0C] to-[#A90A0C]/80"
-            initial={{ scaleX: 0, opacity: 0 }}
-            animate={{ scaleX: isActive ? 1 : 0, opacity: isActive ? 1 : 0 }}
-            transition={{ duration: 0.2 }}
-          />
-          <motion.div
-            className="absolute -bottom-1 left-0 right-0 h-[2px] origin-left bg-gradient-to-r from-[#A90A0C]/80 to-[#A90A0C]/40"
-            initial={{ scaleX: 0, opacity: 0 }}
-            whileHover={{ scaleX: 1, opacity: 1 }}
-            transition={{ duration: 0.2 }}
-          />
-        </Link>
-      </motion.div>
-    );
-  }
-);
+interface NavItemProps {
+  item: (typeof navItems)[number];
+  activeSection: string;
+}
+
+const NavItem = memo(({ item, activeSection }: NavItemProps) => {
+  const isActive = activeSection === `#${item.href.replace('#', '')}` && activeSection !== "#contact";
+
+  return (
+    <motion.div variants={navItemVariants} className="group relative">
+      <Link
+        href={item.href}
+        className="relative text-sm font-medium tracking-wide text-white/70 transition-all duration-300 hover:text-white"
+      >
+        <span className="flex items-center">{item.text}</span>
+        {/* Underline that appears when active */}
+        <motion.div
+          className="absolute -bottom-1 left-0 right-0 h-[2px]"
+          style={{ backgroundColor: "#A90A0C" }}
+          initial={{ scaleX: 0, opacity: 0 }}
+          animate={{ scaleX: isActive ? 1 : 0, opacity: isActive ? 1 : 0 }}
+          transition={{ duration: 0.2 }}
+        />
+        <motion.div
+          className="absolute -bottom-1 left-0 right-0 h-[2px] origin-left bg-gradient-to-r from-[#A90A0C]/80 to-[#A90A0C]/40"
+          initial={{ scaleX: 0, opacity: 0 }}
+          whileHover={{ scaleX: 1, opacity: 1 }}
+          transition={{ duration: 0.2 }}
+        />
+      </Link>
+    </motion.div>
+  );
+});
 
 NavItem.displayName = 'NavItem';
 
@@ -181,7 +195,10 @@ const ContactButton = memo(() => {
   const buttonBg = useTransform(
     scrollY,
     [0, 100],
-    ['linear-gradient(to right, rgba(169,10,12,0.1), transparent)', 'transparent']
+    [
+      'linear-gradient(to right, rgba(169,10,12,0.1), transparent)',
+      'transparent',
+    ]
   );
   const borderColor = useTransform(scrollY, [0, 100], [
     'rgba(169,10,12,0.2)',
@@ -271,6 +288,7 @@ const MobileMenuButton = memo(({ toggleMenu }: { toggleMenu: () => void }) => (
 ));
 
 MobileMenuButton.displayName = 'MobileMenuButton';
+
 
 
 
