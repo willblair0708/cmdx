@@ -22,9 +22,7 @@ import { z } from 'zod';
 
 import ArrowIcon from '@/public/assets/ui/Arrow';
 
-import Navbar from '../Navbar';
-
-interface HeroSectionProps {
+interface ContactHeroSectionProps {
   id: string;
   bgColor: string;
   isMobile: boolean;
@@ -245,11 +243,11 @@ const formSchema = z.object({
   message: z.string().optional(),
 });
 
-export default function HeroSection({
+export default function ContactHeroSection({
   id,
   bgColor,
   isMobile,
-}: HeroSectionProps) {
+}: ContactHeroSectionProps) {
   const sectionRef = useRef<HTMLElement>(null);
   const form = useForm<z.infer<typeof formSchema>>({
     resolver: zodResolver(formSchema),
@@ -346,13 +344,15 @@ export default function HeroSection({
     <motion.section
       ref={sectionRef}
       id={id}
-      className='relative flex min-h-screen flex-col overflow-x-hidden bg-gradient-to-b from-gray-950 via-blue-950/90 to-gray-950 text-white'
+      className="relative flex min-h-screen flex-col overflow-x-hidden text-white"
+      style={{
+        backgroundImage:
+          "linear-gradient(to bottom, #0A192F 100%, #112240 75%, #A90A0C 190%)",
+      }}
       initial={{ opacity: 0 }}
       animate={{ opacity: 1 }}
       transition={{ duration: 1 }}
     >
-      <Navbar isFixed={false} />
-
       <motion.div
         style={{ opacity, scale, y: ySpring }}
         className='mx-auto flex w-full max-w-7xl flex-1 flex-col px-4 lg:flex-row lg:items-center lg:justify-between lg:gap-20 lg:px-8'

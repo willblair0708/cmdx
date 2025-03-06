@@ -1,3 +1,4 @@
+/*
 'use client';
 
 import dynamic from 'next/dynamic';
@@ -88,13 +89,13 @@ export default function ProductsPage() {
           key='products-page'
           className='relative min-h-screen w-screen bg-[#0A192F]'
         >
-          {/* Background Elements */}
+          {/* Background Elements }
           <div className='fixed inset-0'>
             <div className='absolute inset-0 bg-[url("/assets/patterns/grid.svg")] opacity-[0.03]' />
             <div className='absolute inset-0 bg-gradient-to-b from-[#0A192F] via-[#112240] to-[#0A192F]' />
             <div className='bg-gradient-radial absolute inset-0 from-[#A90A0C]/5 via-transparent to-transparent' />
 
-            {/* Ambient Light Effects */}
+            {/* Ambient Light Effects }
             <div className='absolute left-0 top-0 h-[800px] w-[800px] -translate-x-1/2 rounded-full bg-[#A90A0C]/5 blur-[120px]' />
             <div className='absolute right-0 top-1/2 h-[600px] w-[600px] translate-x-1/2 rounded-full bg-[#112240]/30 blur-[120px]' />
           </div>
@@ -155,7 +156,7 @@ export default function ProductsPage() {
                   </ProductSectionWrapper>
                 </div>
               </div>
-            </section> */}
+            </section> }
           </motion.main>
         </motion.div>
       </AnimatePresence>
@@ -218,3 +219,4 @@ const containerVariants = {
     },
   },
 };
+*/

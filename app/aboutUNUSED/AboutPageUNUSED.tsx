@@ -1,3 +1,4 @@
+/*
 'use client';
 
 import dynamic from 'next/dynamic';
@@ -10,7 +11,7 @@ import useIsMobile from '@/hooks/use-is-mobile';
 
 import Footer from '../components/Footer';
 
-const HeroSection = dynamic(() => import('../components/about/HeroSection'), {
+const AboutHeroSection = dynamic(() => import('../components/about/AboutHeroSection'), {
   ssr: false,
 });
 
@@ -61,8 +62,8 @@ export default function AboutPage() {
             animate='visible'
             variants={containerVariants}
           >
-            {/* <HeroSection id='section-0' bgColor='#123456' isMobile={isMobile} /> */}
-
+            {/* <HeroSection id='section-0' bgColor='#123456' isMobile={isMobile} /> }
+/*
             <motion.div ref={ref}>
               <MissionSection
                 id='section-1'
@@ -75,12 +76,14 @@ export default function AboutPage() {
                 bgColor='#000000'
                 isMobile={isMobile}
                 inView={inView}
-              /> */}
+              /> }
+/*
             </motion.div>
           </motion.main>
         </motion.div>
       </AnimatePresence>
-      {/* <FutureSection id='section-2' bgColor='#181818' /> */}
+      {/* <FutureSection id='section-2' bgColor='#181818' /> }
+/*
       <Footer />
     </>
   );
@@ -98,3 +101,4 @@ const containerVariants = {
     },
   },
 };
+*/

@@ -13,8 +13,7 @@ const FOOTER_LINKS = [
   {
     title: 'PLATFORM',
     links: [
-      { name: 'Genetic Screening', href: '/platform#genetic-screening' },
-      { name: 'AI Diagnostics', href: '/platform#ai-diagnostics' },
+      { name: 'Our Platform', href: '#platform' },
     ],
   },
   // {
@@ -28,9 +27,8 @@ const FOOTER_LINKS = [
   {
     title: 'COMPANY',
     links: [
-      { name: 'About', href: '/about' },
-      { name: 'Contact', href: '/contact' },
-      { name: 'Non-Profit', href: '/non-profit' },
+      { name: 'About', href: '#about' },
+      { name: 'Contact', href: '#contact' },
     ],
   },
 ];
@@ -201,10 +199,6 @@ const Footer: React.FC = () => {
                 className='h-12 w-auto drop-shadow-lg'
               />
             </Link>
-            <p className='mt-8 max-w-sm text-sm leading-relaxed tracking-wide text-white/40'>
-              Pioneering accessible genetic screening and AI-powered imaging
-              analysis for cerebral cavernous malformations worldwide.
-            </p>
           </motion.div>
 
           {/* Footer Sections */}
@@ -222,7 +216,7 @@ const Footer: React.FC = () => {
             variants={itemVariants}
             className='text-xs tracking-wider text-white/30'
           >
-            &copy; {new Date().getFullYear()} Axonara Biosciences. All rights
+            &copy; {new Date().getFullYear()} Axonara Biosciences, inc. All rights
             reserved.
           </motion.p>
           <motion.div

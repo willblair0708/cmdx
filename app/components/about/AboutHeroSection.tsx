@@ -1,11 +1,11 @@
+"use client";
+
 import Image from 'next/image';
 import { useRef } from 'react';
 
 import { motion } from 'framer-motion';
 
-import Navbar from '../Navbar';
-
-interface HeroSectionProps {
+interface AboutHeroSectionProps {
   id: string;
   bgColor: string;
   isMobile: boolean;
@@ -18,11 +18,11 @@ const HERO_IMAGE_DIMENSIONS = {
   mobileHeight: 1792,
 };
 
-export default function HeroSection({
+export default function AboutHeroSection({
   id,
   bgColor,
   isMobile,
-}: HeroSectionProps) {
+}: AboutHeroSectionProps) {
   const sectionRef = useRef<HTMLElement>(null);
 
   return (
@@ -37,7 +37,7 @@ export default function HeroSection({
       {/* Dynamic Background Elements */}
       <div className='absolute inset-0'>
         {/* Base Gradient */}
-        <div className='absolute inset-0 bg-gradient-to-b from-[#0A192F] via-[#112240] to-[#0A192F]' />
+        <div className='absolute inset-0 bg-gradient-to-b from-[#0A192F] via-[#112240] to-[#0A192F]/30' />
 
         {/* Animated Gradient Orbs */}
         <motion.div
@@ -101,8 +101,6 @@ export default function HeroSection({
         {/* Particle Effect Overlay */}
         <div className='bg-noise absolute inset-0 opacity-[0.02]' />
       </div>
-
-      <Navbar isFixed={false} />
 
       <div className='relative z-10 mx-auto flex min-h-[calc(100vh-80px)] max-w-7xl flex-col justify-center px-4 sm:px-6 lg:px-8'>
         <div className='max-w-3xl'>

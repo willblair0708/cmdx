@@ -32,7 +32,6 @@ export default function MissionSection({
       variants={containerVariants}
       className='relative min-h-screen overflow-hidden bg-[#0A192F]'
     >
-      <Navbar isFixed={false} />
       <div className='absolute inset-0'>
         {/* Dynamic Background */}
         <div className='absolute inset-0 bg-[url("/assets/patterns/grid.svg")] opacity-[0.03]' />
@@ -206,16 +205,16 @@ const expertiseData = [
   },
   {
     title: 'ML/AI',
-    description: 'Advanced imaging analysis and predictive modeling expertise',
+    description: 'Advanced imaging segmentation and predictive modeling expertise',
     icon: <AIIcon />,
   },
   {
-    title: 'Vascular Neurosurgery',
-    description: 'Clinical expertise in CCM treatment and patient care',
+    title: 'Neurology',
+    description: 'Clinical expertise in disease treatment and patient care',
     icon: <SurgeryIcon />,
   },
   {
-    title: 'Drug Development',
+    title: 'Diagnostic Development',
     description: 'Experience in therapeutic development and clinical trials',
     icon: <DrugDevIcon />,
   },

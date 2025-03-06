@@ -9,7 +9,7 @@ import useIsMobile from '@/hooks/use-is-mobile';
 
 import Navbar from '../Navbar';
 
-interface HeroSectionProps {
+interface PlatformHeroSectionProps {
   id: string;
   bgColor: string;
   onScrollToNext: () => void;
@@ -91,11 +91,11 @@ const Background = () => (
   </motion.div>
 );
 
-export default function HeroSection({
+export default function PlatformHeroSection({
   id,
   bgColor,
   onScrollToNext,
-}: HeroSectionProps) {
+}: PlatformHeroSectionProps) {
   const sectionRef = useRef<HTMLElement>(null);
 
   return (
@@ -110,8 +110,6 @@ export default function HeroSection({
       <Background />
 
       <motion.div className='relative z-20'>
-        <Navbar isFixed={false} />
-
         {/* Hero Content */}
         <div className='mx-auto max-w-7xl px-4 pt-32 sm:px-6 lg:px-8'>
           {/* Hero Text Section */}
@@ -245,10 +243,6 @@ export default function HeroSection({
                     <li className='flex items-center gap-2'>
                       <div className='h-1 w-1 rounded-full bg-[#A90A0C]' />
                       Cloud integration
-                    </li>
-                    <li className='flex items-center gap-2'>
-                      <div className='h-1 w-1 rounded-full bg-[#A90A0C]' />
-                      Remote monitoring
                     </li>
                   </ul>
                 </div>

@@ -1,3 +1,4 @@
+/*
 'use client';
 
 import Script from 'next/script';
@@ -7,7 +8,7 @@ import { AnimatePresence, motion } from 'framer-motion';
 
 import useIsMobile from '@/hooks/use-is-mobile';
 
-import HeroSection from '../components/contact/HeroSection';
+import ContactHeroSection from '../components/contact/ContactHeroSection';
 import Footer from '../components/Footer';
 
 export default function ContactPage() {
@@ -28,7 +29,7 @@ export default function ContactPage() {
           variants={containerVariants}
           className='flex flex-col justify-between bg-background-dark'
         >
-          <HeroSection id='section-0' bgColor='#000000' isMobile={isMobile} />
+          <ContactHeroSection id='section-0' bgColor='#000000' isMobile={isMobile} />
           <Footer />
         </motion.main>
       </motion.div>
@@ -48,3 +49,4 @@ const containerVariants = {
     },
   },
 };
+*/
