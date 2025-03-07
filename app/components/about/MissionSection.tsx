@@ -205,7 +205,7 @@ const expertiseData = [
   },
   {
     title: 'ML/AI',
-    description: 'Advanced imaging segmentation and predictive modeling expertise',
+    description: 'Advanced image segmentation and predictive modeling expertise',
     icon: <AIIcon />,
   },
   {
@@ -214,7 +214,7 @@ const expertiseData = [
     icon: <SurgeryIcon />,
   },
   {
-    title: 'Diagnostic Development',
+    title: 'Biotechnology Development',
     description: 'Experience in therapeutic development and clinical trials',
     icon: <DrugDevIcon />,
   },

@@ -125,7 +125,7 @@ export default function MainHeroSection({ id, isMobile }: MainHeroSectionProps) 
               transition={{ delay: 0.4, duration: 0.8 }}
               className="mb-8 max-w-2xl text-base leading-relaxed text-white/70 sm:mb-12 sm:text-lg"
             >
-              Pioneering accessible genetic testing for inherited forms of seizure,
+              Pioneering accessible genetic screening for inherited forms of seizure,
               vascular malformations, and other neurological diseases, bridging advanced
               molecular diagnostics to patients worldwide.
             </motion.p>

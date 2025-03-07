@@ -140,7 +140,7 @@ export default function PlatformHeroSection({
             >
               <span className='text-white'>Pioneering</span>
               <br />
-              <span className='text-[#A90A0C]'>CCM Diagnostics</span>
+              <span className='text-[#A90A0C]'>Neurology Diagnostics</span>
             </motion.h1>
 
             {/* Description */}
@@ -150,9 +150,9 @@ export default function PlatformHeroSection({
               transition={{ duration: 0.6, delay: 0.4 }}
               className='mb-8 text-xl leading-relaxed text-white/80'
             >
-              Introducing the first integrated diagnostic platform for CCM which
-              combines portable genetic screening devices with our AI-powered
-              imaging analysis to revolutionize early detection and monitoring.
+              Introducing the first integrated diagnostic platform for cerebral cavernous malformations (CCM), which
+              combines point-of-care genetic screening with our AI-powered
+              image analysis tool to revolutionize early detection and monitoring.
             </motion.p>
           </motion.div>
 
@@ -178,22 +178,21 @@ export default function PlatformHeroSection({
                   </div>
 
                   <p className='text-white/70'>
-                    Portable PCR device for rapid genetic testing, enabling
-                    point-of-care diagnostics in resource-limited settings.
+                     Focus on high-prevalence settings across the Southwestern U.S. and Mexico.
                   </p>
 
                   <ul className='space-y-3 text-sm text-white/60'>
                     <li className='flex items-center gap-2'>
                       <div className='h-1 w-1 rounded-full bg-[#A90A0C]' />
-                      Rapid Results
+                      Isothermal amplification producing rapid results
                     </li>
                     <li className='flex items-center gap-2'>
                       <div className='h-1 w-1 rounded-full bg-[#A90A0C]' />
-                      Low cost
+                      Point-of-care kit enabling rapid genetic screening
                     </li>
                     <li className='flex items-center gap-2'>
                       <div className='h-1 w-1 rounded-full bg-[#A90A0C]' />
-                      Point-of-care testing
+                      Genomic information accessible in novel geographies
                     </li>
                   </ul>
                 </div>
