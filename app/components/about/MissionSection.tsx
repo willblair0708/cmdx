@@ -66,8 +66,8 @@ export default function MissionSection({
               >
                 <p className='leading-relaxed'>
                   Our team and advisors bring together world-class expertise
-                  across biochemistry, ML/AI, vascular neurosurgery, and drug
-                  development to tackle CCM's most pressing challenges.
+                  across biochemistry, neurology, pre-clinical, and clinical development 
+                  to address the most pressing diagnostic challenges facing patients and providers.
                 </p>
                 <div className='grid gap-6 sm:grid-cols-2'>
                   {/* Expertise Cards */}
@@ -200,22 +200,22 @@ const expertiseData = [
   {
     title: 'Biochemistry',
     description:
-      'Deep understanding of CCM pathogenesis and molecular mechanisms',
+      'Deep understanding of disease pathogenesis and molecular mechanisms',
     icon: <BiochemIcon />,
   },
   {
-    title: 'ML/AI',
+    title: 'AI/ML',
     description: 'Advanced image segmentation and predictive modeling expertise',
     icon: <AIIcon />,
   },
   {
     title: 'Neurology',
-    description: 'Clinical expertise in disease treatment and patient care',
+    description: 'Comprehensive experience in disease treatment and patient care',
     icon: <SurgeryIcon />,
   },
   {
-    title: 'Biotechnology Development',
-    description: 'Experience in therapeutic development and clinical trials',
+    title: 'Biotechnology',
+    description: 'Expertise in research & development and clinical trials',
     icon: <DrugDevIcon />,
   },
 ];

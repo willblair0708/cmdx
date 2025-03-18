@@ -126,7 +126,7 @@ export default function MainHeroSection({ id, isMobile }: MainHeroSectionProps) 
               className="mb-8 max-w-2xl text-base leading-relaxed text-white/70 sm:mb-12 sm:text-lg"
             >
               Pioneering accessible genetic screening for inherited forms of seizure,
-              vascular malformations, and other neurological diseases, bridging advanced
+              vascular malformations, and other neurological diseases, bringing advanced
               molecular diagnostics to patients worldwide.
             </motion.p>
 

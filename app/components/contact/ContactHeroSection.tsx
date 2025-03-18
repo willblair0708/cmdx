@@ -60,7 +60,7 @@ const formFields = [
   {
     id: 'researchArea',
     label: 'RESEARCH AREA',
-    placeholder: 'e.g. Genetic Screening, Clinical Research, Disease Diagnosis',
+    placeholder: 'Subject e.g. Genetic Screening, Clinical Research, Disease Diagnosis',
     type: 'text',
     width: 'half',
   },
@@ -371,7 +371,7 @@ export default function ContactHeroSection({
               <div className='relative h-full w-full rounded-full bg-blue-400'></div>
             </div>
             <span className='text-sm font-medium text-white/90'>
-              AI-Powered Innovation
+              Point-of-Care Innovation
             </span>
           </motion.div>
 
@@ -379,12 +379,12 @@ export default function ContactHeroSection({
             variants={slideInVariants}
             initial='hidden'
             animate={isInView ? 'visible' : 'hidden'}
-            className='mb-6 font-light text-4xl tracking-tight sm:text-6xl lg:text-7xl'
+            className='mb-6 font-light text-4xl tracking-tight sm:text-6xl lg:text-6.5xl'
           >
             <span className='text-white'>Transforming</span>
             <br />
             <span className='bg-gradient-to-r from-blue-400 to-blue-200 bg-clip-text text-transparent'>
-              CCM Diagnostics
+              Genetic Diagnostics
             </span>
           </motion.h1>
 
@@ -395,7 +395,7 @@ export default function ContactHeroSection({
             className='mb-8 text-lg text-neutral-400'
           >
             Pioneering accessible genetic screening and AI-powered imaging
-            analysis for underserved communities worldwide.
+            analysis for underserved communities globally.
           </motion.p>
         </div>
 
@@ -412,7 +412,7 @@ export default function ContactHeroSection({
             animate='animate'
             className='mb-8 text-xl font-medium tracking-tight'
           >
-            Request a Demo
+            Contact Us
           </motion.p>
 
           <form
@@ -476,9 +476,7 @@ export default function ContactHeroSection({
                     />
                   </svg>
                   <p className='text-sm text-white opacity-80'>
-                    Share your diagnostic needs and discover how our AI-powered
-                    genetic screening and imaging analysis can enhance your
-                    clinical outcomes.
+                    Please share any relevant details.
                   </p>
                 </div>
 
@@ -527,7 +525,7 @@ export default function ContactHeroSection({
             >
               <div className='absolute inset-0 bg-gradient-to-r from-blue-400/0 via-blue-300/10 to-blue-400/0 transition-transform duration-500' />
               <span className='relative mt-[-1.00px] w-fit whitespace-nowrap text-xs font-normal leading-[13.2px] tracking-[0.96px] text-white'>
-                {isSubmitting ? 'SENDING...' : 'REQUEST DEMO'}
+                {isSubmitting ? 'SENDING...' : 'REACH OUT'}
               </span>
               {!isSubmitting && (
                 <ArrowIcon

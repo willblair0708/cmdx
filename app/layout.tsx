@@ -164,6 +164,12 @@ export default function RootLayout({
                 `,
         }}
       />
+      <Script
+        src="https://www.google.com/recaptcha/enterprise.js?render=6LexbW8qAAAAAIr7IhfsTb0UMA8gqigbZIY1sHrY"
+        async
+        defer
+        strategy="afterInteractive"
+      />
       <body
         className={`${abcOracle.variable} ${geistMono.variable} ${gtPantheon.variable} bg-background-light font-sans text-primary antialiased`}
       >

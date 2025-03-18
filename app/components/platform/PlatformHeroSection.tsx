@@ -188,7 +188,7 @@ export default function PlatformHeroSection({
                     </li>
                     <li className='flex items-center gap-2'>
                       <div className='h-1 w-1 rounded-full bg-[#A90A0C]' />
-                      Point-of-care kit enabling rapid genetic screening
+                      Point-of-care kits enabling rapid genetic screening
                     </li>
                     <li className='flex items-center gap-2'>
                       <div className='h-1 w-1 rounded-full bg-[#A90A0C]' />
@@ -230,18 +230,22 @@ export default function PlatformHeroSection({
                   </div>
 
                   <p className='text-white/70'>
-                    Advanced imaging analysis powered by machine learning for
+                    Advanced imaging analysis for
                     accurate CCM detection and monitoring.
                   </p>
 
                   <ul className='space-y-3 text-sm text-white/60'>
                     <li className='flex items-center gap-2'>
                       <div className='h-1 w-1 rounded-full bg-[#A90A0C]' />
-                      Real-time analysis
+                      Machine learning image segmentation
                     </li>
                     <li className='flex items-center gap-2'>
                       <div className='h-1 w-1 rounded-full bg-[#A90A0C]' />
-                      Cloud integration
+                      Data labeling of pathalogical structures
+                    </li>
+                    <li className='flex items-center gap-2'>
+                      <div className='h-1 w-1 rounded-full bg-[#A90A0C]' />
+                      Sensitivity to CCM and other vascular anomalies
                     </li>
                   </ul>
                 </div>
